@@ -9,6 +9,6 @@ public interface CategorieService {
     void addCategorie(Categorie categorie);
     Categorie getCategorieById(Integer CategorieId);
     List<Categorie> getCategories();
-    void updateCategorieById(Integer categorieId, Categorie categorie);
+void updateCategorieById(Integer categorieId, Categorie categorie);
     void deleteById(Integer CategorieId);
 }
