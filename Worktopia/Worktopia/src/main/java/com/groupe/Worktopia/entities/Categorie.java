@@ -25,6 +25,7 @@ public class Categorie implements Serializable {
     private Integer categorieId;
     private String intitule;
     private String description;
+    private String typeFormation; //en ligne , en presentiel, mixte
     private Boolean Status;
     private Date createdAt;
     private Date updatedAt;

@@ -22,11 +22,14 @@ public class Demandeformation implements Serializable {
     private Integer demandeformationId;
     private String titreFormation;
     private String objet;
-    private String message;
-    private Boolean statut;
+    private Boolean statut;           //en attente, refusee, aprouvee
+    private String commentaire;
     private Date createdAt;
     private Date updatedAt;
 
     @ManyToOne
     private Formation formation;
+
+//    @ManyToOne
+//    private User user;
 }

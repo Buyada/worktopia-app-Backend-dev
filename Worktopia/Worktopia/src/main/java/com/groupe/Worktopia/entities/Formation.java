@@ -23,6 +23,7 @@ public class Formation implements Serializable {
     private Integer formationId;
     private String intitule;
     private String description;
+    private Integer duree;
     private Boolean Status;
     private Date createdAt;
     private Date updatedAt;
