@@ -1,2 +1,4 @@
-package com.groupe.Worktopia.controller;public class ProfilController {
+package com.groupe.Worktopia.controller;
+
+public class ProfilController {
 }
