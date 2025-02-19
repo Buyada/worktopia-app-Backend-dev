@@ -2,11 +2,13 @@ package com.groupe.Worktopia.service.categorie;
 
 
 import com.groupe.Worktopia.entities.Categorie;
+import com.groupe.Worktopia.exception.ResourceNotFoundException;
 import com.groupe.Worktopia.repository.CategorieRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategorieServiceImpl implements CategorieService {
@@ -35,7 +37,8 @@ public class CategorieServiceImpl implements CategorieService {
 
     @Override
     public void updateCategorieById(Integer categorieId, Categorie categorie) {
-        Categorie categorieToUpdate = this.categorieRepo.findById(categorieId).get();
+
+        Categorie categorieToUpdate = this.categorieRepo.findById(categorieId).orElseThrow(()-> new ResourceNotFoundException("Resource not Found"));
         categorieToUpdate.setIntitule(categorie.getIntitule());
         categorieToUpdate.setDescription(categorie.getDescription());
         categorieToUpdate.setTypeFormation(categorie.getTypeFormation());
@@ -46,6 +49,8 @@ public class CategorieServiceImpl implements CategorieService {
 
     @Override
     public void deleteById(Integer categorieId) {
-        this.categorieRepo.deleteById(categorieId);
+        Categorie categoryToDelete = this.categorieRepo.findById(categorieId)
+                .orElseThrow(()->new ResourceNotFoundException("Category not found !"));
+        this.categorieRepo.delete(categoryToDelete);
     }
 }
