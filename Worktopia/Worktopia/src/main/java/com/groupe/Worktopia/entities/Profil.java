@@ -1,2 +1,3 @@
-package com.groupe.Worktopia.entities;public class Profil {
+package com.groupe.Worktopia.entities;
+public class Profil {
 }

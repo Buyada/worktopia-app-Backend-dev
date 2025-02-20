@@ -4,33 +4,31 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.NoArgsConstructor;
 
 import java.security.PrivateKey;
 import java.util.Date;
-
+@NoArgsConstructor
 @Entity
 public class Conge {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Date departConge;
+    private Long idConge;
     private Date retourConge;
     private String raisonConge;
 
-    public Conge() {
-    }
-
-    public Conge(Date departConge, Date retourConge, String raisonConge) {
-        this.departConge = departConge;
+    public Conge(Long idConge, Date retourConge, String raisonConge) {
+        this.idConge = idConge;
         this.retourConge = retourConge;
         this.raisonConge = raisonConge;
     }
 
-    public String getRaisonConge() {
-        return raisonConge;
+    public Long getIdConge() { 
+        return idConge;
     }
 
-    public void setRaisonConge(String raisonConge) {
-        this.raisonConge = raisonConge;
+    public void setIdConge(Long idConge) {
+        this.idConge = idConge;
     }
 
     public Date getRetourConge() {
@@ -41,11 +39,11 @@ public class Conge {
         this.retourConge = retourConge;
     }
 
-    public Date getDepartConge() {
-        return departConge;
+    public String getRaisonConge() {
+        return raisonConge;
     }
 
-    public void setDepartConge(Date departConge) {
-        this.departConge = departConge;
+    public void setRaisonConge(String raisonConge) {
+        this.raisonConge = raisonConge;
     }
 }
