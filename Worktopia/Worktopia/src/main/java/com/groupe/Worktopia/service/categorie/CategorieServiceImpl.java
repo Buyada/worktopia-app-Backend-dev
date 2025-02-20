@@ -2,6 +2,7 @@ package com.groupe.Worktopia.service.categorie;
 
 
 import com.groupe.Worktopia.entities.Categorie;
+import com.groupe.Worktopia.exception.ResourceExistException;
 import com.groupe.Worktopia.exception.ResourceNotFoundException;
 import com.groupe.Worktopia.repository.CategorieRepo;
 import org.springframework.stereotype.Service;
@@ -21,13 +22,20 @@ public class CategorieServiceImpl implements CategorieService {
 
     @Override
     public void addCategorie(Categorie categorie) {
-        categorie.setCreatedAt(new Date());
+        Optional<Categorie> CategorieAdd = this.categorieRepo.findByIntitule(categorie.getIntitule());
+        if(CategorieAdd.isPresent())
+            throw new ResourceExistException("The record already exists !");
+
+            categorie.setCreatedAt(new Date());
         this.categorieRepo.save(categorie);
     }
 
     @Override
     public Categorie getCategorieById(Integer categorieId) {
-        return this.categorieRepo.findById(categorieId).get();
+
+        return this.categorieRepo
+                .findById(categorieId)
+                .orElseThrow(()->new ResourceNotFoundException("Resource not found !"));
     }
 
     @Override
