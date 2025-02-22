@@ -35,11 +35,9 @@ public class User implements Serializable {
     private Boolean statut;
 
     @ManyToOne
-    @JoinColumn(name = "role_id", nullable = false)
     private UserRole role;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profil_id", referencedColumnName = "id")
     private Profil profil;
     
 }
