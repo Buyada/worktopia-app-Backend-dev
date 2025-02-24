@@ -6,7 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.NoArgsConstructor;
 
-import java.security.PrivateKey;
 import java.util.Date;
 @NoArgsConstructor
 @Entity
@@ -35,7 +34,7 @@ public class Conge {
         return retourConge;
     }
 
-    public void setRetourConge(Date retourConge) {
+    public void setRetourConge() {
         this.retourConge = retourConge;
     }
 

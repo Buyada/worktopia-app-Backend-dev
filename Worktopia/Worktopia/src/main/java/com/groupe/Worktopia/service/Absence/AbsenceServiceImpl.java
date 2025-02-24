@@ -38,5 +38,5 @@ public class AbsenceServiceImpl implements AbsenceService {
     @Override
     public void deleteAbsence(Long id) {
 
-    }
+    } 
 }
