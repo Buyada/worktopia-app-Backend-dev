@@ -32,11 +32,14 @@ public class AbsenceServiceImpl implements AbsenceService {
 
     @Override
     public Absence updateAbsence(Absence newAbsence, Long id) {
-        return null;
+        Absence oldAbsence = this.absenceRepo.findById(id).get();
+        oldAbsence.setNombreAbsence(newAbsence.getNombreAbsence());
+        oldAbsence.setJustifiee(newAbsence.getJustifiee());
+        return this.absenceRepo.saveAndFlush(oldAbsence);
     }
 
     @Override
     public void deleteAbsence(Long id) {
-
+        this.absenceRepo.deleteById(id);
     } 
 }
