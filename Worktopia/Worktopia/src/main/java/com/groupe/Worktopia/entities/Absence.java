@@ -3,7 +3,9 @@ package com.groupe.Worktopia.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @NoArgsConstructor
 
@@ -12,38 +14,27 @@ public class Absence {
 
     @Id
     @GeneratedValue
-    private Long idAbsence;
+    private Long id;
+    @Setter
+    @Getter
     private Boolean justifiee;
+    @Setter
+    @Getter
     private int nombreAbsence;
 
 
     public Absence(Long idAbsence, Boolean justifiee, int nombreAbsence) {
-        this.idAbsence = idAbsence;
+        this.id = id;
         this.justifiee = justifiee;
         this.nombreAbsence = nombreAbsence;
     }
 
     public Long getIdAbsence() {
-        return idAbsence;
+        return id;
     }
 
-    public void setIdAbsence(Long idAbsence) {
-        this.idAbsence = idAbsence;
+    public void setIdAbsence(Long id) {
+        this.id = id;
     }
 
-    public Boolean getJustifiee() {
-        return justifiee;
-    }
-
-    public void setJustifiee(Boolean justifiee) {
-        this.justifiee = justifiee;
-    }
-
-    public int getNombreAbsence() {
-        return nombreAbsence;
-    }
-
-    public void setNombreAbsence(int nombreAbsence) {
-        this.nombreAbsence = nombreAbsence;
-    }
 }
