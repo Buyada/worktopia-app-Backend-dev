@@ -17,7 +17,6 @@ public class Employe extends User{
 
     private String poste;
     private double salaireBase;
-    private double heureSupplementaire;
     private double prime;
     private double cotisationSociale;
 

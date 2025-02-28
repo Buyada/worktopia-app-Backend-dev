@@ -3,9 +3,11 @@ package com.groupe.Worktopia.service.payement;
 import com.groupe.Worktopia.entities.BulletinPaie;
 import com.groupe.Worktopia.entities.Employe;
 import com.groupe.Worktopia.repository.BulletinPaieRepo;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
+@Service
 public class PayementServiceImpl implements PayementService {
 
     private BulletinPaieRepo bulletinPaieRepo;
@@ -17,7 +19,7 @@ public class PayementServiceImpl implements PayementService {
 
     @Override
     public BulletinPaie genererBulletinPaie(Employe employe) {
-        double salaireBrut = employe.getSalaireBase() + (employe.getHeureSupplementaire() * 100) + employe.getPrime();
+        double salaireBrut = employe.getSalaireBase() + employe.getPrime();
         double cotisation = salaireBrut * (employe.getCotisationSociale() / 100);
         double salaireNet = salaireBrut - cotisation ;
 

@@ -6,5 +6,5 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ProfilController {
-    public final ProfilService profilService
+
 }

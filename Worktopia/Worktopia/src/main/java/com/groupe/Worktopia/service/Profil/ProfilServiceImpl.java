@@ -6,6 +6,7 @@ import com.groupe.Worktopia.repository.ProfilRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class ProfilServiceImpl implements ProfilService {
 

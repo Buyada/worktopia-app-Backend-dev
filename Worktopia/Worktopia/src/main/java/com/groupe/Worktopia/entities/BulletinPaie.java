@@ -18,7 +18,7 @@ import java.time.LocalDate;
 public class BulletinPaie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer bulletinID;
+    private Long bulletinID;
 
     private double salaireBrut;
 
