@@ -15,7 +15,6 @@ import java.io.Serializable;
 
 public class Employe extends User{
 
-
     private String poste;
     private double salaireBase;
     private double heureSupplementaire;
