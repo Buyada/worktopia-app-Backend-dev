@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.nio.file.Path;
 import java.util.List;
 
+@RestController
 public class BulletinPaieController {
 
     private EmployeRepo employeRepo;
