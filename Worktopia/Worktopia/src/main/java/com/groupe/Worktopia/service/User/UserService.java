@@ -1,7 +1,6 @@
 package com.groupe.Worktopia.service.User;
 
 import com.groupe.Worktopia.entities.User;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
