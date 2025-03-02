@@ -13,12 +13,15 @@ import java.io.Serializable;
 @Getter
 @Setter
 
-public class Employe extends User{
-
+public class Employe{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // Cette propriété doit exister
+    private String firstName;
+    private String lastName;
     private String poste;
     private double salaireBase;
     private double prime;
-    private double cotisationSociale;
 
 
 }

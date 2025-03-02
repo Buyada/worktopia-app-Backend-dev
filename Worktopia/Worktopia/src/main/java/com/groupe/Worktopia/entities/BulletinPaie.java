@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "Bulletin_Paie")
 @AllArgsConstructor
@@ -18,18 +20,16 @@ import java.time.LocalDate;
 public class BulletinPaie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long bulletinID;
+    private Long bulletinId;
 
     private double salaireBrut;
 
     private double salaireNet;
 
-    private double cotisation;
-
-    private LocalDate dateGeneration;
+    private LocalDateTime dateGeneration;
 
     @ManyToOne
-    @JoinColumn(name = "employee_id")
+    @JoinColumn(name = "employe_id")
     private Employe employe;
 
 }

@@ -4,6 +4,7 @@ import com.groupe.Worktopia.entities.BulletinPaie;
 import com.groupe.Worktopia.entities.Employe;
 import com.groupe.Worktopia.repository.BulletinPaieRepo;
 import com.groupe.Worktopia.repository.EmployeRepo;
+import com.groupe.Worktopia.service.Employe.EmployeService;
 import com.groupe.Worktopia.service.payement.PayementService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ public class BulletinPaieController {
     private EmployeRepo employeRepo;
     private BulletinPaieRepo bulletinPaieRepo;
     private PayementService payementService;
+    private EmployeService employeService;
 
     public BulletinPaieController(
             BulletinPaieRepo bulletinPaieRepo,
@@ -25,52 +27,38 @@ public class BulletinPaieController {
         this.bulletinPaieRepo = bulletinPaieRepo;
         this.employeRepo = employeRepo;
         this.payementService = payementService;
+        this.employeService = employeService;
     }
-    @GetMapping
+
+    @GetMapping(path = "/api/bulletinPaie/get_All")
     public ResponseEntity<List<BulletinPaie>> getAllBulletin() {
         return ResponseEntity.status(200).body(bulletinPaieRepo.findAll());
     }
 
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "/api/bulletinPaie/get_by_Id/{id}")
     public ResponseEntity<BulletinPaie> getBulletinById(@PathVariable Long id){
-        BulletinPaie bulletin = this.bulletinPaieRepo.findById(id).orElseThrow(()->new RuntimeException("non trouve !"));
+        BulletinPaie bulletin = this.payementService.getBulletinPaie(id);
         return ResponseEntity.status(200).body(bulletin);
     }
 
 
     //generer un bulletin de paie pour un employe
-    @PostMapping("/generate/{id}")
-    public ResponseEntity<BulletinPaie> generateBulletin(@PathVariable Long id){
-        Employe employe = this.employeRepo.findById(id).orElseThrow(()-> new RuntimeException("employe non trouve !"));
-
-        BulletinPaie bulletin = payementService.genererBulletinPaie(employe);
-
-        BulletinPaie bulletinEnregistre = bulletinPaieRepo.save(bulletin);
-
-        return ResponseEntity.status(200).body(bulletinEnregistre);
+    @PostMapping(path = "api/bulletinPaie/generate/{employeId}")
+    public ResponseEntity<String> generateBulletin(@PathVariable Long employeId){
+       BulletinPaie bulletinPaie = payementService.genererBulletinPaie(employeId);
+        return ResponseEntity.status(200).body("generer avec succes !");
     }
 
 
-    @PutMapping("/id")
-    public ResponseEntity<BulletinPaie> updateBulletin(@PathVariable Long id, @RequestBody BulletinPaie updatedBull){
-        BulletinPaie bulletin = this.bulletinPaieRepo.findById(id).orElseThrow(()-> new RuntimeException("bulletin non trouver!"));
-
-        bulletin.setSalaireBrut(updatedBull.getSalaireBrut());
-        bulletin.setSalaireNet(updatedBull.getSalaireNet());
-        bulletin.setCotisation(updatedBull.getCotisation());
-        bulletin.setDateGeneration(updatedBull.getDateGeneration());
-
-        BulletinPaie newBulletin = bulletinPaieRepo.save(bulletin);
-
-        return ResponseEntity.status(200).body(newBulletin);
+    @PutMapping(path = "api/bulletinPaie/update_by_id/{id}")
+    public ResponseEntity<String> updateBulletin(@PathVariable Long id, @RequestBody BulletinPaie bulletinPaie){
+        this.payementService.getBulletinPaie(id);
+        return ResponseEntity.status(200).body("bulletin modifie avec succces !");
     }
 
-    @DeleteMapping("/id")
+    @DeleteMapping(path = "/api/bulletinPaie/delete_by_Id/{id}")
     public ResponseEntity<String> deleteBulletin(@PathVariable Long id){
-        BulletinPaie bulletin = this.bulletinPaieRepo.findById(id).orElseThrow(()-> new RuntimeException("bulletin non trouver!"));
-
-        this.bulletinPaieRepo.delete(bulletin);
-
+        this.payementService.deleteBulletinPaie(id);
         return ResponseEntity.status(200).body("supprimer avec succes !");
     }
 
