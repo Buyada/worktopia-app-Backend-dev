@@ -22,7 +22,7 @@ public class BulletinPaieController {
 
     public BulletinPaieController(
             BulletinPaieRepo bulletinPaieRepo,
-            EmployeRepo employeeRepo,
+            EmployeRepo employeRepo,
             PayementService payementService) {
         this.bulletinPaieRepo = bulletinPaieRepo;
         this.employeRepo = employeRepo;
@@ -35,9 +35,9 @@ public class BulletinPaieController {
         return ResponseEntity.status(200).body(bulletinPaieRepo.findAll());
     }
 
-    @GetMapping(path = "/api/bulletinPaie/get_by_Id/{id}")
-    public ResponseEntity<BulletinPaie> getBulletinById(@PathVariable Long id){
-        BulletinPaie bulletin = this.payementService.getBulletinPaie(id);
+    @GetMapping(path = "/api/bulletinPaie/get_by_Id/{bulletinId}")
+    public ResponseEntity<BulletinPaie> getBulletinById(@PathVariable Long bulletinId){
+        BulletinPaie bulletin = this.payementService.getBulletinPaieById(bulletinId);
         return ResponseEntity.status(200).body(bulletin);
     }
 
@@ -50,15 +50,15 @@ public class BulletinPaieController {
     }
 
 
-    @PutMapping(path = "api/bulletinPaie/update_by_id/{id}")
-    public ResponseEntity<String> updateBulletin(@PathVariable Long id, @RequestBody BulletinPaie bulletinPaie){
-        this.payementService.getBulletinPaie(id);
+    @PutMapping(path = "api/bulletinPaie/update_by_id/{bulletinId}")
+    public ResponseEntity<String> updateBulletin(@PathVariable Long bulletinId, @RequestBody BulletinPaie bulletinPaie){
+        this.payementService.updateBulletinPaie(bulletinId,bulletinPaie);
         return ResponseEntity.status(200).body("bulletin modifie avec succces !");
     }
 
     @DeleteMapping(path = "/api/bulletinPaie/delete_by_Id/{id}")
-    public ResponseEntity<String> deleteBulletin(@PathVariable Long id){
-        this.payementService.deleteBulletinPaie(id);
+    public ResponseEntity<String> deleteBulletin(@PathVariable Long bulletinId){
+        this.payementService.deleteBulletinPaie(bulletinId);
         return ResponseEntity.status(200).body("supprimer avec succes !");
     }
 

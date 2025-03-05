@@ -24,9 +24,9 @@ public class EmployeController {
         return ResponseEntity.status(200).body(this.employeRepo.findAll());
     }
 
-    @GetMapping(path = "/api/employe/find_by_Id/{id}")
-    public ResponseEntity<Employe> findEmployeById(@PathVariable Long id){
-       Employe employe =  this.employeService.getEmploye(id);
+    @GetMapping(path = "/api/employe/find_by_Id/{idEmploye}")
+    public ResponseEntity<Employe> findEmployeById(@PathVariable Long idEmploye){
+       Employe employe =  this.employeService.getEmployeById(idEmploye);
         return ResponseEntity.status(200).body(employe);
     }
 
@@ -36,16 +36,16 @@ public class EmployeController {
         return ResponseEntity.status(200).body("employe creer avec succes !");
     }
 
-    @PutMapping(path = "/api/employe/update_by_Id/{id}")
-    public ResponseEntity<String> updateEmploye(@PathVariable Long id, @RequestBody Employe employe){
-        this.employeService.getEmploye(id);
+    @PutMapping(path = "/api/employe/update_by_Id/{idEmploye}")
+    public ResponseEntity<String> updateEmploye(@PathVariable Long idEmploye, @RequestBody Employe employe){
+        this.employeService.updateEmploye(idEmploye, employe);
         return ResponseEntity.status(200).body("Employe modifier avec success !");
     }
 
 
-    @DeleteMapping(path = "/api/employe/delete_by_Id/{id}")
-    public ResponseEntity<String> deleteEmploye(@PathVariable Long id){
-        Employe employe = this.employeService.getEmploye(id);
+    @DeleteMapping(path = "/api/employe/delete_by_Id/{idEmploye}")
+    public ResponseEntity<String> deleteEmploye(@PathVariable Long idEmploye){
+        this.employeService.deleteEmploye(idEmploye);
         return ResponseEntity.status(200).body("employe supprimer avec succes !");
     }
 

@@ -1,5 +1,7 @@
 package com.groupe.Worktopia.entities;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,6 +9,9 @@ import lombok.Setter;
 
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.Date;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,12 +21,15 @@ import java.io.Serializable;
 public class Employe{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Cette propriété doit exister
+    private Long idEmploye;
     private String firstName;
     private String lastName;
     private String poste;
     private double salaireBase;
     private double prime;
+    private String email;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
 
 }

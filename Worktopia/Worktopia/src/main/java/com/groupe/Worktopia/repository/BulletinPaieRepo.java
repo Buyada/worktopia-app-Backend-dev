@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface BulletinPaieRepo extends JpaRepository<BulletinPaie,Long> {
-    List<BulletinPaie> findByEmployeId(Long employeId);
+    //List<BulletinPaie> findByEmployeId(Long idEmploye);
 }

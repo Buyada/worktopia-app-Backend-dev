@@ -28,8 +28,10 @@ public class BulletinPaie {
 
     private LocalDateTime dateGeneration;
 
+    private LocalDateTime dateModification;
+
     @ManyToOne
-    @JoinColumn(name = "employe_id")
+    @JoinColumn(name = "id_employe")
     private Employe employe;
 
 }
