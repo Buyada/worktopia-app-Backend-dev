@@ -31,8 +31,8 @@ public class Profil implements Serializable {
     @NotEmpty(message = "please fill this!")
     @NotNull(message = "this field couldn't be null")
     private String lastname;
-    @NotEmpty(message = "please fill this!")
-    @NotNull(message = "this field couldn't be null")
+//    @NotEmpty(message = "please fill this!")
+//    @NotNull(message = "this field couldn't be null")
     private Integer numerotelephone;
     private String datenaissance;
     private String addresse;

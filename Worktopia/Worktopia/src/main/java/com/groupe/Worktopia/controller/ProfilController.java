@@ -18,29 +18,29 @@ public class ProfilController {
         this.profilService = profilService;
     }
 
-//    @PostMapping(path = "api/profile/add")
-//    public ResponseEntity<String> addProfile(@Valid @RequestBody Profil profil){
-//        this.profilService.addProfil(profil);
-//
-//        return ResponseEntity
-//                .status(201)
-//                .body("Profile added successfully !");
-//    }
+    @PostMapping(path = "api/profile/add")
+    public ResponseEntity<String> addProfile(@Valid @RequestBody Profil profil){
+        this.profilService.addProfil(profil);
 
-//    @GetMapping(path = "api/profile/get_by_id/{profileId}")
-//    public ResponseEntity<Profil> getProfileById(@PathVariable Integer profileId){
-//
-//        return ResponseEntity
-//                .status(200)
-//                .body(this.profilService.getProfil(profileId));
-//    }
+        return ResponseEntity
+                .status(201)
+                .body("Profile added successfully !");
+    }
 
-//    @GetMapping(path = "api/prodfile/get_all")
-//    public ResponseEntity<List<Profil>> getProfiles(){
-//        return ResponseEntity
-//                .status(201)
-//                .body(this.profilService.getProfils());
-//    }
+    @GetMapping(path = "api/profile/get_by_id/{profileId}")
+    public ResponseEntity<Profil> getProfileById(@PathVariable Integer profileId){
+
+        return ResponseEntity
+                .status(200)
+                .body(this.profilService.getProfil(profileId));
+    }
+
+    @GetMapping(path = "api/prodfile/get_all")
+    public ResponseEntity<List<Profil>> getProfiles(){
+        return ResponseEntity
+                .status(201)
+                .body(this.profilService.getProfils());
+    }
 
     @PutMapping(path = "api/profil/updateProfileById/{profileId}")
     public ResponseEntity<String> updateProfile(Integer profileId, @Valid @RequestBody Profil profil){

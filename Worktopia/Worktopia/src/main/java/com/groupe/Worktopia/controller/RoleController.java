@@ -51,7 +51,7 @@ public class RoleController {
                 .body("Updated successfully");
     }
 
-    @PutMapping(path = "api/role/deletebyid/{}roleId")
+    @PutMapping(path = "api/role/deletebyid/{roleId}")
     public ResponseEntity<String> delRole(@PathVariable Integer roleId){
         this.roleService.deleteRole(roleId);
         return  ResponseEntity

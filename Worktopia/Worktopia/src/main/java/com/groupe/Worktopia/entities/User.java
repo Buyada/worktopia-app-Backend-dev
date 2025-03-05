@@ -42,7 +42,7 @@ private String email;
 @ManyToOne
     private Profil profil;
 
-@ManyToMany
-    private List<Role> roles;
+@ManyToOne
+    private Role roles;
 
 }
