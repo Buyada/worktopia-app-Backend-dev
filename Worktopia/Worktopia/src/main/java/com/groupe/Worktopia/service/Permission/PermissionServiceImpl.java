@@ -34,8 +34,8 @@ public class PermissionServiceImpl implements PermissionService{
     public Permission updatePermission(Permission newPermission, Long id) {
         Permission oldPermission = this.permissionRepo.findById(id).get();
         oldPermission.setDateDepermission(newPermission.getDateDepermission());
-        oldPermission.setEnfantMalade(newPermission.getEnfantMalade());
-        oldPermission.setMariage(newPermission.getMariage());
+        oldPermission.setDateDeRetour(newPermission.getDateDeRetour());
+        oldPermission.setRaison(newPermission.getRaison());
 
         return this.permissionRepo.saveAndFlush(oldPermission);
     }

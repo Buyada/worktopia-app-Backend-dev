@@ -3,57 +3,27 @@ package com.groupe.Worktopia.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Date;
-
 @NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Entity
 public class Permission {
 @Id
-@GeneratedValue
+@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPermission;
     private Date dateDepermission;
-    private Boolean mariage;
-    private int enfantMalade;
+    private String raison;
+    private Date dateDeRetour;
 
-    public Permission(Long idPermission, Date dateDepermission, Boolean mariage, int enfantMalade) {
-        this.idPermission = idPermission;
-        this.dateDepermission = dateDepermission;
-        this.mariage = mariage;
-        this.enfantMalade = enfantMalade;
-    }
 
-    public Long getIdPermission() {
-        return idPermission;
-    }
 
-    public void setIdPermission(Long idPermission) {
-        this.idPermission = idPermission;
-    }
-
-    public Date getDateDepermission() {
-        return dateDepermission;
-    }
-
-    public void setDateDepermission(Date dateDepermission) {
-        this.dateDepermission = dateDepermission;
-    }
-
-    public Boolean getMariage() {
-        return mariage;
-    }
-
-    public void setMariage(Boolean mariage) {
-        this.mariage = mariage;
-    }
-
-    public int getEnfantMalade() {
-        return enfantMalade;
-    }
-
-    public void setEnfantMalade(int enfantMalade) {
-        this.enfantMalade = enfantMalade;
-    }
 }

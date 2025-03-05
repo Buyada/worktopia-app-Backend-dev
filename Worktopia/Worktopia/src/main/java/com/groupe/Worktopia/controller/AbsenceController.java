@@ -45,11 +45,11 @@ public class AbsenceController {
 
 
     @PutMapping(path = "api/p1/absence/update_by_id/{idAbsence}")
-    public ResponseEntity<Absence> updateAbsence(@PathVariable Long idAdresse,
+    public ResponseEntity<Absence> updateAbsence(@PathVariable Long idAbsence,
                                                  @RequestBody Absence absence){
 
         return ResponseEntity.status(HttpStatus.ACCEPTED)
-                .body(this.absenceService.updateAbsence(absence,idAdresse));
+                .body(this.absenceService.updateAbsence(absence,idAbsence));
     }
 
 
@@ -58,6 +58,6 @@ public class AbsenceController {
         this.absenceService.deleteAbsence(idAbsence);
         return ResponseEntity
                 .status(202)
-                .body("This absence has been deleted successfully ! ");
+                .body("This absence was deleted successfully ! ");
     }
 }

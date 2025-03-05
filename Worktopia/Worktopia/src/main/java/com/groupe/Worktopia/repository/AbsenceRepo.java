@@ -9,5 +9,5 @@ import java.util.Map;
 
 @Repository
 public interface AbsenceRepo extends JpaRepository<Absence, Long> {
-    Map<Object, Object> findAllById(Long id);
+
 }
