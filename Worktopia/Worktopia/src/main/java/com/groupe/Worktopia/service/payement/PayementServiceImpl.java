@@ -5,6 +5,7 @@ import com.groupe.Worktopia.entities.Employe;
 import com.groupe.Worktopia.exception.RessourceNotFoundException;
 import com.groupe.Worktopia.repository.BulletinPaieRepo;
 import com.groupe.Worktopia.repository.EmployeRepo;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -42,14 +43,32 @@ public class PayementServiceImpl implements PayementService {
             }
 
     @Override
-    public void updateBulletinPaie(Long bulletinId, BulletinPaie bulletinPaie) {
-        this.bulletinPaieRepo.findById(bulletinId).orElseThrow(()->new RessourceNotFoundException("bulletin non trouve !"));
+    @Transactional
+    public BulletinPaie updateBulletinPaie(Long bulletinId, BulletinPaie bulletinPaie) {
 
-        bulletinPaie.setSalaireBrut(bulletinPaie.getSalaireBrut());
-        bulletinPaie.setSalaireNet(bulletinPaie.getSalaireNet());
-        bulletinPaie.setDateModification(bulletinPaie.getDateModification());
+       BulletinPaie bulletinExistant = this.bulletinPaieRepo.findById(bulletinId).orElseThrow(()->new RessourceNotFoundException("bulletin non trouve !"));
 
-        this.bulletinPaieRepo.saveAndFlush(bulletinPaie);
+       Employe employeExistant = bulletinExistant.getEmploye();
+
+
+        Employe nouvelEmploye = bulletinPaie.getEmploye();
+        employeExistant.setFirstName(nouvelEmploye.getFirstName());
+        employeExistant.setLastName(nouvelEmploye.getLastName());
+        employeExistant.setEmail(nouvelEmploye.getEmail());
+        employeExistant.setPrime(nouvelEmploye.getPrime());
+        employeExistant.setPoste(nouvelEmploye.getPoste());
+        employeExistant.setUpdatedAt(nouvelEmploye.getUpdatedAt());
+
+        double salaireBrut = employeExistant.getSalaireBase() + employeExistant.getPrime();
+        double salaireNet = salaireBrut;
+
+        bulletinExistant.setSalaireBrut(salaireBrut);
+        bulletinExistant.setSalaireNet(salaireNet);
+        bulletinExistant.setDateGeneration(bulletinPaie.getDateModification());
+        bulletinExistant.setDateModification(bulletinPaie.getDateModification());
+        
+        employeRepo.save(employeExistant);
+        return bulletinPaieRepo.save(bulletinExistant);
 
     }
 

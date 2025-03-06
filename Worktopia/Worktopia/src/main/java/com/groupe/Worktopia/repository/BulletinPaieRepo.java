@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface BulletinPaieRepo extends JpaRepository<BulletinPaie,Long> {
     //List<BulletinPaie> findByEmployeId(Long idEmploye);
+    List<BulletinPaie> findByEmployeIdEmploye(Long idEmploye);
 }

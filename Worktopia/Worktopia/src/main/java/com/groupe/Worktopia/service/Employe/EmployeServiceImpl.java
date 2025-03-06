@@ -1,34 +1,53 @@
 package com.groupe.Worktopia.service.Employe;
 
 
+import com.groupe.Worktopia.entities.BulletinPaie;
 import com.groupe.Worktopia.entities.Employe;
 import com.groupe.Worktopia.exception.RessourceNotFoundException;
+import com.groupe.Worktopia.repository.BulletinPaieRepo;
 import com.groupe.Worktopia.repository.EmployeRepo;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class EmployeServiceImpl implements EmployeService {
 
     private EmployeRepo employeRepo;
-    public EmployeServiceImpl(EmployeRepo employeRepo){
+    private BulletinPaieRepo bulletinPaieRepo;
+    public EmployeServiceImpl(EmployeRepo employeRepo, BulletinPaieRepo bulletinPaieRepo){
         this.employeRepo = employeRepo;
+        this.bulletinPaieRepo = bulletinPaieRepo;
     }
 
 
     @Override
-    public void updateEmploye(Long idEmploye, Employe employe) {
-       this.employeRepo.findById(idEmploye).orElseThrow(()->new RessourceNotFoundException("employe non trouve !"));
-        employe.setFirstName(employe.getFirstName());
-        employe.setLastName(employe.getLastName());
-        employe.setPoste(employe.getPoste());
-        employe.setSalaireBase(employe.getSalaireBase());
-        employe.setPoste(employe.getPoste());
-        employe.setEmail(employe.getEmail());
-        employe.setUpdatedAt(LocalDateTime.now());
+    public Employe updateEmploye(Long idEmploye, Employe employe) {
+       Employe employeExistant = this.employeRepo.findById(idEmploye).orElseThrow(()->new RessourceNotFoundException("employe non trouve !"));
+        employeExistant.setFirstName(employe.getFirstName());
+        employeExistant.setLastName(employe.getLastName());
+        employeExistant.setPoste(employe.getPoste());
+        employeExistant.setSalaireBase(employe.getSalaireBase());
+        employeExistant.setPoste(employe.getPoste());
+        employeExistant.setEmail(employe.getEmail());
+        employeExistant.setUpdatedAt(LocalDateTime.now());
 
-        this.employeRepo.saveAndFlush(employe);
+        List<BulletinPaie> bulletinsPais = bulletinPaieRepo.findByEmployeIdEmploye(idEmploye);
+        for (BulletinPaie bulletin : bulletinsPais){
+            double salaireBrut = employeExistant.getSalaireBase() + employeExistant.getPrime();
+            double salaireNet = salaireBrut;
+
+            bulletin.setSalaireBrut(salaireBrut);
+            bulletin.setSalaireNet(salaireNet);
+
+            bulletinPaieRepo.save(bulletin);
+
+
+        }
+
+        return employeRepo.save(employeExistant);
 
     }
 

@@ -1,5 +1,6 @@
 package com.groupe.Worktopia.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,6 +33,6 @@ public class BulletinPaie {
 
     @ManyToOne
     @JoinColumn(name = "id_employe")
+    @JsonBackReference
     private Employe employe;
-
 }
