@@ -64,10 +64,11 @@ public class PayementServiceImpl implements PayementService {
 
         bulletinExistant.setSalaireBrut(salaireBrut);
         bulletinExistant.setSalaireNet(salaireNet);
-        bulletinExistant.setDateGeneration(bulletinPaie.getDateModification());
-        bulletinExistant.setDateModification(bulletinPaie.getDateModification());
-        
+        bulletinExistant.setDateGeneration(LocalDateTime.now());
+        bulletinExistant.setDateModification(LocalDateTime.now());
+
         employeRepo.save(employeExistant);
+
         return bulletinPaieRepo.save(bulletinExistant);
 
     }

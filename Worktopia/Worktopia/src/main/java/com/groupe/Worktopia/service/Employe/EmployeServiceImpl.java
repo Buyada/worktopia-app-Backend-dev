@@ -43,8 +43,6 @@ public class EmployeServiceImpl implements EmployeService {
             bulletin.setSalaireNet(salaireNet);
 
             bulletinPaieRepo.save(bulletin);
-
-
         }
 
         return employeRepo.save(employeExistant);
