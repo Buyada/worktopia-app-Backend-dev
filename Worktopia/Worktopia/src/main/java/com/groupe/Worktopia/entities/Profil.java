@@ -10,6 +10,7 @@ import lombok.Setter;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "profil")
+
 public class Profil implements Serializable {
 
 @Serial
@@ -43,9 +46,8 @@ public class Profil implements Serializable {
     private Date createdAt;
     private Date updatedAt;// Stocke le CV en base
 
-@OneToMany(mappedBy = "profil")
-    private List<User> users;
-
+    @OneToMany(mappedBy = "profilId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<User> users = new ArrayList<>();
 
 
 }

@@ -21,6 +21,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "role")
+
 public class Role implements Serializable {
     @Serial
     private  static final long serialVersionUID = 1L;
@@ -35,5 +37,5 @@ public class Role implements Serializable {
     private  Date updateAt;
 
     @ManyToMany(mappedBy = "roles")
-    private List<User> users;
+    private List<User> user;
 }

@@ -22,6 +22,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "user")
+
 public class User implements Serializable {
     @Serial
     private  static final long serialVersionUID = 1L;
@@ -39,10 +41,11 @@ private String email;
     private  Date updateAt;
 
 
-@ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "profilId")  // Clé étrangère vers Profil
     private Profil profil;
 
-@ManyToOne
+    @ManyToOne
     private Role roles;
 
 }
