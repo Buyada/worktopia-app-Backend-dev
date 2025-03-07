@@ -10,7 +10,6 @@ import com.groupe.Worktopia.repository.EmployeRepo;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,7 +17,6 @@ import java.util.stream.Collectors;
 @Service
 public class PayementServiceImpl implements PayementService {
 
-    @Override
     private BulletinPaieRepo bulletinPaieRepo;
     private EmployeRepo employeRepo;
     private BulletinPaieMapper bulletinPaieMapper;
@@ -95,9 +93,10 @@ public class PayementServiceImpl implements PayementService {
     }
 
     @Override
-    public BulletinPaieDto getBulletinPaieById(Long bulletinId) {
+    public BulletinPaie getBulletinPaieById(Long bulletinId) {
         BulletinPaie bulletin = this.bulletinPaieRepo.findById(bulletinId)
                 .orElseThrow(()->new RessourceNotFoundException("bulletin non trouve !"));
+        this.bulletinPaieMapper.toBulletinPaieDto(bulletin);
         return bulletin;
     }
 }

@@ -2,11 +2,11 @@ package com.groupe.Worktopia.service.Employe;
 
 
 import com.groupe.Worktopia.dto.EmployeDto.EmployeDto;
-import com.groupe.Worktopia.dto.EmployeDto.EmployeDtoRs;
 import com.groupe.Worktopia.entities.BulletinPaie;
 import com.groupe.Worktopia.entities.Employe;
 import com.groupe.Worktopia.exception.RessourceExistException;
 import com.groupe.Worktopia.exception.RessourceNotFoundException;
+import com.groupe.Worktopia.mapper.BulletinPaieMapper;
 import com.groupe.Worktopia.mapper.EmployeMapper;
 import com.groupe.Worktopia.repository.BulletinPaieRepo;
 import com.groupe.Worktopia.repository.EmployeRepo;
@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeServiceImpl implements EmployeService {
@@ -29,29 +30,41 @@ public class EmployeServiceImpl implements EmployeService {
 
 
     @Override
-    public EmployeDto updateEmploye(Long idEmploye, EmployeDto employeDto) {
-       Employe employeExistant = this.employeRepo.findById(idEmploye).orElseThrow(()->new RessourceNotFoundException("employe non trouve !"));
+    public EmployeDto updateEmployeById(Long idEmploye, EmployeDto employeDto) {
+
+        Employe employeExistant = employeRepo.findById(idEmploye)
+                .orElseThrow(() -> new RessourceNotFoundException("Employé non trouvé !"));
+
         employeExistant.setFirstName(employeDto.getFirstName());
         employeExistant.setLastName(employeDto.getLastName());
         employeExistant.setPoste(employeDto.getPoste());
+        employeExistant.setPrime(employeDto.getPrime());
         employeExistant.setSalaireBase(employeDto.getSalaireBase());
-        employeExistant.setPoste(employeDto.getPoste());
         employeExistant.setEmail(employeDto.getEmail());
         employeExistant.setUpdatedAt(LocalDateTime.now());
 
-        List<BulletinPaie> bulletinsPais = bulletinPaieRepo.findByEmployeIdEmploye(idEmploye);
-        for (BulletinPaie bulletin : bulletinsPais){
+        List<BulletinPaie> bulletinsPaie = bulletinPaieRepo.findByEmployeIdEmploye(idEmploye);
+        for (BulletinPaie bulletin : bulletinsPaie) {
             double salaireBrut = employeExistant.getSalaireBase() + employeExistant.getPrime();
             double salaireNet = salaireBrut;
 
             bulletin.setSalaireBrut(salaireBrut);
             bulletin.setSalaireNet(salaireNet);
-
-            bulletinPaieRepo.save(bulletin);
+            bulletin.setDateModification(LocalDateTime.now());
         }
 
-        return employeRepo.save(employeExistant);
 
+        bulletinPaieRepo.saveAll(bulletinsPaie);
+
+        Employe employeMisAJour = employeRepo.save(employeExistant);
+
+        return employeMapper.toDto(employeMisAJour);
+    }
+
+    @Override
+    public List<EmployeDto> getAll() {
+        List<Employe> employes = this.employeRepo.findAll();
+        return this.employeMapper.toDtoList(employes);
     }
 
     @Override
@@ -63,21 +76,23 @@ public class EmployeServiceImpl implements EmployeService {
 
     @Override
     public void addEmploye(EmployeDto employeDto) {
-        List<Employe> nouvelEmploye = this.employeRepo.findByEmail(employeDto.getEmail());
 
-        if(!nouvelEmploye.isEmpty()){
+        List<Employe> EmployeExistant = this.employeRepo.findByEmail(employeDto.getEmail());
+
+        if(!EmployeExistant.isEmpty()){
             throw new RessourceExistException("l'employe existe deja !");
         }
 
         Employe employe = this.employeMapper.toEmploye(employeDto);
 
         employe.setCreatedAt(LocalDateTime.now());
+
         this.employeRepo.save(employe);
     }
 
     @Override
     public EmployeDto getEmployeById(Long idEmploye) {
         Employe employe = this.employeRepo.findById(idEmploye).orElseThrow(()-> new RessourceNotFoundException("employe non trouve !"));
-        return this.employeMapper.toDto(employe);
+        return (this.employeMapper.toDto(employe));
     }
 }

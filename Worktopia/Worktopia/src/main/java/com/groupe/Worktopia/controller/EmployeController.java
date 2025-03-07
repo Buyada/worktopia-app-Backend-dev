@@ -1,48 +1,45 @@
 package com.groupe.Worktopia.controller;
 
 
-import com.groupe.Worktopia.dto.EmployeDto.EmployeDtoRs;
-import com.groupe.Worktopia.entities.Employe;
-import com.groupe.Worktopia.mapper.EmployeMapper;
+import com.groupe.Worktopia.dto.EmployeDto.EmployeDto;
 import com.groupe.Worktopia.repository.EmployeRepo;
 import com.groupe.Worktopia.service.Employe.EmployeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class EmployeController {
     private EmployeRepo employeRepo;
     private EmployeService employeService;
-    private EmployeMapper employeMapper;
 
-    public EmployeController(EmployeRepo employeRepo, EmployeService employeService, EmployeMapper employeMapper){
+    public EmployeController(EmployeRepo employeRepo, EmployeService employeService){
         this.employeRepo = employeRepo;
         this.employeService = employeService;
-        this.employeMapper = employeMapper;
     }
 
     @GetMapping(path = "/api/employe/get_All")
-    public ResponseEntity<List<EmployeDtoRs>> getAllEmploye(){
-
-        return ResponseEntity.status(200).body(this.employeRepo.findAll());
+    public ResponseEntity<List<EmployeDto>> getAllEmploye(){
+        List<EmployeDto> employes = this.employeService.getAll();
+        return ResponseEntity.status(200).body(employes);
     }
 
     @GetMapping(path = "/api/employe/find_by_Id/{idEmploye}")
-    public ResponseEntity<EmployeDtoRs> findEmployeById(@PathVariable Long idEmploye){
+    public ResponseEntity<EmployeDto> findEmployeById(@PathVariable Long idEmploye){
         return ResponseEntity.status(200).body(this.employeService.getEmployeById(idEmploye));
     }
 
     @PostMapping(path = "/api/employe/create_employe")
-    public ResponseEntity<String> createEmploye(@RequestBody EmployeDtoRs employe){
+    public ResponseEntity<String> createEmploye(@RequestBody EmployeDto employe){
         this.employeService.addEmploye(employe);
         return ResponseEntity.status(200).body("employe creer avec succes !");
     }
 
     @PutMapping(path = "/api/employe/update_by_Id/{idEmploye}")
-    public ResponseEntity<String> updateEmploye(@PathVariable Long idEmploye, @RequestBody Employe employe){
-        this.employeService.updateEmploye(idEmploye, employe);
+    public ResponseEntity<String> updateEmploye(@PathVariable Long idEmploye, @RequestBody EmployeDto employe){
+        this.employeService.updateEmployeById(idEmploye, employe);
         return ResponseEntity.status(200).body("Employe modifier avec success !");
     }
 

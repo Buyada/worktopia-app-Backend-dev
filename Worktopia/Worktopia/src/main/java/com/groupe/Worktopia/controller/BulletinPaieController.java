@@ -37,15 +37,15 @@ public class BulletinPaieController {
     }
 
     @GetMapping(path = "/api/bulletinPaie/get_All")
-    public ResponseEntity<List<BulletinPaie>> getAllBulletin() {
-        return ResponseEntity.status(200).body(bulletinPaieRepo.findAll());
+    public ResponseEntity<List<BulletinPaieDto>> getAllBulletin() {
+        return ResponseEntity.status(200).body(payementServiceImpl.getAllBulletinPaie());
     }
 
     @GetMapping(path = "/api/bulletinPaie/get_by_Id/{bulletinId}")
     public ResponseEntity<BulletinPaieDto> getBulletinById(@PathVariable Long bulletinId){
 
         BulletinPaie bulletin = this.payementServiceImpl.getBulletinPaieById(bulletinId);
-        return ResponseEntity.status(200).body(bulletin);
+        return ResponseEntity.status(200).body(this.bulletinPaieMapper.toBulletinPaieDto(bulletin));
     }
 
 
