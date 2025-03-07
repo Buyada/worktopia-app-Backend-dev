@@ -1,8 +1,10 @@
 package com.groupe.Worktopia.service.payement;
 
+import com.groupe.Worktopia.dto.BulletinPaieDto.BulletinPaieDto;
 import com.groupe.Worktopia.entities.BulletinPaie;
 import com.groupe.Worktopia.entities.Employe;
 import com.groupe.Worktopia.exception.RessourceNotFoundException;
+import com.groupe.Worktopia.mapper.BulletinPaieMapper;
 import com.groupe.Worktopia.repository.BulletinPaieRepo;
 import com.groupe.Worktopia.repository.EmployeRepo;
 import jakarta.transaction.Transactional;
@@ -10,33 +12,45 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PayementServiceImpl implements PayementService {
 
+    @Override
     private BulletinPaieRepo bulletinPaieRepo;
     private EmployeRepo employeRepo;
+    private BulletinPaieMapper bulletinPaieMapper;
 
-    public PayementServiceImpl(BulletinPaieRepo bulletinPaieRepo, EmployeRepo employeRepo){
+    public PayementServiceImpl(BulletinPaieRepo bulletinPaieRepo, EmployeRepo employeRepo, BulletinPaieMapper bulletinPaieMapper){
           this.bulletinPaieRepo = bulletinPaieRepo;
           this.employeRepo = employeRepo;
+          this.bulletinPaieMapper = bulletinPaieMapper;
+    }
+
+    @Override
+    public List<BulletinPaieDto> getAllBulletinPaie() {
+        return this.bulletinPaieRepo.findAll().stream().map(bulletinPaieMapper::toBulletinPaieDto).collect(Collectors.toList());
     }
 
     @Override
     public BulletinPaie genererBulletinPaie(Long idEmploye) {
 
+
         Employe employe = employeRepo.findById(idEmploye).orElseThrow(()->new RessourceNotFoundException("bulletin non trouve !"));
 
 
-                double salaireBrut = employe.getSalaireBase() + employe.getPrime();
-                double salaireNet =  salaireBrut;
 
-                BulletinPaie bulletin = new BulletinPaie();
+        double salaireBrut = employe.getSalaireBase() + employe.getPrime();
+        double salaireNet =  salaireBrut;
 
-                bulletin.setSalaireBrut(salaireBrut);
-                bulletin.setSalaireNet(salaireNet);
-                bulletin.setDateGeneration(LocalDateTime.now());
-                bulletin.setEmploye(employe);
+        BulletinPaie bulletin = new BulletinPaie();
+
+        bulletin.setSalaireBrut(salaireBrut);
+        bulletin.setSalaireNet(salaireNet);
+        bulletin.setDateGeneration(LocalDateTime.now());
+        bulletin.setEmploye(employe);
 
                 return bulletinPaieRepo.save(bulletin);
 
@@ -81,7 +95,7 @@ public class PayementServiceImpl implements PayementService {
     }
 
     @Override
-    public BulletinPaie getBulletinPaieById(Long bulletinId) {
+    public BulletinPaieDto getBulletinPaieById(Long bulletinId) {
         BulletinPaie bulletin = this.bulletinPaieRepo.findById(bulletinId)
                 .orElseThrow(()->new RessourceNotFoundException("bulletin non trouve !"));
         return bulletin;

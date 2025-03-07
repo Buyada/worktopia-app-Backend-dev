@@ -1,7 +1,6 @@
 package com.groupe.Worktopia.controller;
 
 
-import com.groupe.Worktopia.dto.EmployeDto.EmployeDtoRq;
 import com.groupe.Worktopia.dto.EmployeDto.EmployeDtoRs;
 import com.groupe.Worktopia.entities.Employe;
 import com.groupe.Worktopia.mapper.EmployeMapper;
@@ -26,7 +25,7 @@ public class EmployeController {
 
     @GetMapping(path = "/api/employe/get_All")
     public ResponseEntity<List<EmployeDtoRs>> getAllEmploye(){
-        
+
         return ResponseEntity.status(200).body(this.employeRepo.findAll());
     }
 

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BulletinPaieDtoRq {
+public class BulletinPaieDto {
     private double salaireBrut;
 
     private double salaireNet;

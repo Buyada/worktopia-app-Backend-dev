@@ -1,7 +1,7 @@
 package com.groupe.Worktopia.service.Employe;
 
 
-import com.groupe.Worktopia.dto.EmployeDto.EmployeDtoRq;
+import com.groupe.Worktopia.dto.EmployeDto.EmployeDto;
 import com.groupe.Worktopia.dto.EmployeDto.EmployeDtoRs;
 import com.groupe.Worktopia.entities.BulletinPaie;
 import com.groupe.Worktopia.entities.Employe;
@@ -13,9 +13,7 @@ import com.groupe.Worktopia.repository.EmployeRepo;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EmployeServiceImpl implements EmployeService {
@@ -31,14 +29,14 @@ public class EmployeServiceImpl implements EmployeService {
 
 
     @Override
-    public EmployeDtoRs updateEmploye(Long idEmploye, EmployeDtoRs employeDtoRs) {
+    public EmployeDto updateEmploye(Long idEmploye, EmployeDto employeDto) {
        Employe employeExistant = this.employeRepo.findById(idEmploye).orElseThrow(()->new RessourceNotFoundException("employe non trouve !"));
-        employeExistant.setFirstName(employeDtoRs.getFirstName());
-        employeExistant.setLastName(employeDtoRs.getLastName());
-        employeExistant.setPoste(employeDtoRs.getPoste());
-        employeExistant.setSalaireBase(employeDtoRs.getSalaireBase());
-        employeExistant.setPoste(employeDtoRs.getPoste());
-        employeExistant.setEmail(employeDtoRs.getEmail());
+        employeExistant.setFirstName(employeDto.getFirstName());
+        employeExistant.setLastName(employeDto.getLastName());
+        employeExistant.setPoste(employeDto.getPoste());
+        employeExistant.setSalaireBase(employeDto.getSalaireBase());
+        employeExistant.setPoste(employeDto.getPoste());
+        employeExistant.setEmail(employeDto.getEmail());
         employeExistant.setUpdatedAt(LocalDateTime.now());
 
         List<BulletinPaie> bulletinsPais = bulletinPaieRepo.findByEmployeIdEmploye(idEmploye);
@@ -64,22 +62,22 @@ public class EmployeServiceImpl implements EmployeService {
     }
 
     @Override
-    public void addEmploye(EmployeDtoRq employeDtoRq) {
-        List<Employe> nouvelEmploye = this.employeRepo.findByEmail(employeDtoRq.getEmail());
+    public void addEmploye(EmployeDto employeDto) {
+        List<Employe> nouvelEmploye = this.employeRepo.findByEmail(employeDto.getEmail());
 
         if(!nouvelEmploye.isEmpty()){
             throw new RessourceExistException("l'employe existe deja !");
         }
 
-        Employe employe = this.employeMapper.getEmployeFromEmployeDtoRq(employeDtoRq);
+        Employe employe = this.employeMapper.toEmploye(employeDto);
 
         employe.setCreatedAt(LocalDateTime.now());
         this.employeRepo.save(employe);
     }
 
     @Override
-    public EmployeDtoRs getEmployeById(Long idEmploye) {
+    public EmployeDto getEmployeById(Long idEmploye) {
         Employe employe = this.employeRepo.findById(idEmploye).orElseThrow(()-> new RessourceNotFoundException("employe non trouve !"));
-        return this.employeMapper.getEmployeDtoRsFromEmploye(employe);
+        return this.employeMapper.toDto(employe);
     }
 }

@@ -1,7 +1,9 @@
 package com.groupe.Worktopia.controller;
 
+import com.groupe.Worktopia.dto.BulletinPaieDto.BulletinPaieDto;
 import com.groupe.Worktopia.entities.BulletinPaie;
 import com.groupe.Worktopia.entities.Employe;
+import com.groupe.Worktopia.mapper.BulletinPaieMapper;
 import com.groupe.Worktopia.repository.BulletinPaieRepo;
 import com.groupe.Worktopia.repository.EmployeRepo;
 import com.groupe.Worktopia.service.Employe.EmployeService;
@@ -20,15 +22,18 @@ public class BulletinPaieController {
     private BulletinPaieRepo bulletinPaieRepo;
     private PayementServiceImpl payementServiceImpl;
     private EmployeService employeService;
+    private BulletinPaieMapper bulletinPaieMapper;
 
     public BulletinPaieController(
             BulletinPaieRepo bulletinPaieRepo,
             EmployeRepo employeRepo,
-            PayementServiceImpl payementServiceImpl) {
+            PayementServiceImpl payementServiceImpl,
+            BulletinPaieMapper bulletinPaieMapper) {
         this.bulletinPaieRepo = bulletinPaieRepo;
         this.employeRepo = employeRepo;
         this.payementServiceImpl = payementServiceImpl;
         this.employeService = employeService;
+        this.bulletinPaieMapper = bulletinPaieMapper;
     }
 
     @GetMapping(path = "/api/bulletinPaie/get_All")
@@ -37,7 +42,8 @@ public class BulletinPaieController {
     }
 
     @GetMapping(path = "/api/bulletinPaie/get_by_Id/{bulletinId}")
-    public ResponseEntity<BulletinPaie> getBulletinById(@PathVariable Long bulletinId){
+    public ResponseEntity<BulletinPaieDto> getBulletinById(@PathVariable Long bulletinId){
+
         BulletinPaie bulletin = this.payementServiceImpl.getBulletinPaieById(bulletinId);
         return ResponseEntity.status(200).body(bulletin);
     }
