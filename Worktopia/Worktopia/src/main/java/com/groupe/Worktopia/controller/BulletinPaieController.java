@@ -38,7 +38,8 @@ public class BulletinPaieController {
 
     @GetMapping(path = "/api/bulletinPaie/get_All")
     public ResponseEntity<List<BulletinPaieDto>> getAllBulletin() {
-        return ResponseEntity.status(200).body(payementServiceImpl.getAllBulletinPaie());
+        List<BulletinPaieDto> bulletinPaie = this.payementServiceImpl.getAllBulletinPaie();
+        return ResponseEntity.status(200).body(bulletinPaie);
     }
 
     @GetMapping(path = "/api/bulletinPaie/get_by_Id/{bulletinId}")

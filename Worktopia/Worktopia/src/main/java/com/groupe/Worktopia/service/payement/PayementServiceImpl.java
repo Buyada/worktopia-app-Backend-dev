@@ -5,6 +5,7 @@ import com.groupe.Worktopia.entities.BulletinPaie;
 import com.groupe.Worktopia.entities.Employe;
 import com.groupe.Worktopia.exception.RessourceNotFoundException;
 import com.groupe.Worktopia.mapper.BulletinPaieMapper;
+import com.groupe.Worktopia.mapper.EmployeMapper;
 import com.groupe.Worktopia.repository.BulletinPaieRepo;
 import com.groupe.Worktopia.repository.EmployeRepo;
 import jakarta.transaction.Transactional;
@@ -20,16 +21,19 @@ public class PayementServiceImpl implements PayementService {
     private BulletinPaieRepo bulletinPaieRepo;
     private EmployeRepo employeRepo;
     private BulletinPaieMapper bulletinPaieMapper;
+    private EmployeMapper employeMapper;
 
-    public PayementServiceImpl(BulletinPaieRepo bulletinPaieRepo, EmployeRepo employeRepo, BulletinPaieMapper bulletinPaieMapper){
+    public PayementServiceImpl(BulletinPaieRepo bulletinPaieRepo, EmployeRepo employeRepo, BulletinPaieMapper bulletinPaieMapper, EmployeMapper employeMapper){
           this.bulletinPaieRepo = bulletinPaieRepo;
           this.employeRepo = employeRepo;
           this.bulletinPaieMapper = bulletinPaieMapper;
+          this.employeMapper = employeMapper;
     }
 
     @Override
     public List<BulletinPaieDto> getAllBulletinPaie() {
-        return this.bulletinPaieRepo.findAll().stream().map(bulletinPaieMapper::toBulletinPaieDto).collect(Collectors.toList());
+        List<BulletinPaie> bulletin = this.bulletinPaieRepo.findAll();
+        return this.bulletinPaieMapper.toDtoLis(bulletin);
     }
 
     @Override
@@ -37,7 +41,6 @@ public class PayementServiceImpl implements PayementService {
 
 
         Employe employe = employeRepo.findById(idEmploye).orElseThrow(()->new RessourceNotFoundException("bulletin non trouve !"));
-
 
 
         double salaireBrut = employe.getSalaireBase() + employe.getPrime();
@@ -48,6 +51,8 @@ public class PayementServiceImpl implements PayementService {
         bulletin.setSalaireBrut(salaireBrut);
         bulletin.setSalaireNet(salaireNet);
         bulletin.setDateGeneration(LocalDateTime.now());
+        bulletin.setDateModification(LocalDateTime.now());
+
         bulletin.setEmploye(employe);
 
                 return bulletinPaieRepo.save(bulletin);
