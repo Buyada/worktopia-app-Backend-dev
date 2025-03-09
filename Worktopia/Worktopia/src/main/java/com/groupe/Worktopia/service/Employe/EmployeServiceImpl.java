@@ -63,7 +63,7 @@ public class EmployeServiceImpl implements EmployeService {
 
         Employe employeMisAJour = employeRepo.save(employeExistant);
 
-        return employeMapper.toDto(employeMisAJour);
+        return employeMapper.toEmployeDto(employeMisAJour);
     }
 
     @Override
@@ -100,6 +100,6 @@ public class EmployeServiceImpl implements EmployeService {
     @Override
     public EmployeDto getEmployeById(Long idEmploye) {
         Employe employe = this.employeRepo.findById(idEmploye).orElseThrow(()-> new RessourceNotFoundException("employe non trouve !"));
-        return (this.employeMapper.toDto(employe));
+        return (this.employeMapper.toEmployeDto(employe));
     }
 }

@@ -33,7 +33,7 @@ public class PayementServiceImpl implements PayementService {
     @Override
     public List<BulletinPaieDto> getAllBulletinPaie() {
         List<BulletinPaie> bulletin = this.bulletinPaieRepo.findAll();
-        return this.bulletinPaieMapper.toDtoLis(bulletin);
+        return this.bulletinPaieMapper.toDtoList(bulletin);
     }
 
     @Override

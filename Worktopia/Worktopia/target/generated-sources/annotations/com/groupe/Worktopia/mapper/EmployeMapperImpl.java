@@ -1,7 +1,9 @@
 package com.groupe.Worktopia.mapper;
 
 import com.groupe.Worktopia.dto.EmployeDto.EmployeDto;
+import com.groupe.Worktopia.entities.BulletinPaie;
 import com.groupe.Worktopia.entities.Employe;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -9,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-03-09T02:19:00+0100",
+    date = "2025-03-09T15:44:35+0100",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.14 (Amazon.com Inc.)"
 )
 @Component
@@ -21,34 +23,54 @@ public class EmployeMapperImpl implements EmployeMapper {
             return null;
         }
 
-        Employe employe = new Employe();
+        Long idEmploye = null;
+        String email = null;
+        double prime = 0.0d;
+        double salaireBase = 0.0d;
+        String poste = null;
+        String lastName = null;
+        String firstName = null;
 
-        employe.setIdEmploye( employeDto.getIdEmploye() );
-        employe.setFirstName( employeDto.getFirstName() );
-        employe.setLastName( employeDto.getLastName() );
-        employe.setPoste( employeDto.getPoste() );
-        employe.setSalaireBase( employeDto.getSalaireBase() );
-        employe.setPrime( employeDto.getPrime() );
-        employe.setEmail( employeDto.getEmail() );
+        idEmploye = employeDto.getIdEmploye();
+        email = employeDto.getEmail();
+        prime = employeDto.getPrime();
+        salaireBase = employeDto.getSalaireBase();
+        poste = employeDto.getPoste();
+        lastName = employeDto.getLastName();
+        firstName = employeDto.getFirstName();
+
+        List<BulletinPaie> bulletinsPaie = null;
+        LocalDateTime updatedAt = null;
+        LocalDateTime createdAt = null;
+
+        Employe employe = new Employe( bulletinsPaie, updatedAt, email, createdAt, prime, salaireBase, poste, lastName, firstName, idEmploye );
 
         return employe;
     }
 
     @Override
-    public EmployeDto toDto(Employe employe) {
+    public EmployeDto toEmployeDto(Employe employe) {
         if ( employe == null ) {
             return null;
         }
 
-        EmployeDto employeDto = new EmployeDto();
+        Long idEmploye = null;
+        String firstName = null;
+        String lastName = null;
+        String poste = null;
+        double salaireBase = 0.0d;
+        double prime = 0.0d;
+        String email = null;
 
-        employeDto.setIdEmploye( employe.getIdEmploye() );
-        employeDto.setFirstName( employe.getFirstName() );
-        employeDto.setLastName( employe.getLastName() );
-        employeDto.setPoste( employe.getPoste() );
-        employeDto.setSalaireBase( employe.getSalaireBase() );
-        employeDto.setPrime( employe.getPrime() );
-        employeDto.setEmail( employe.getEmail() );
+        idEmploye = employe.getIdEmploye();
+        firstName = employe.getFirstName();
+        lastName = employe.getLastName();
+        poste = employe.getPoste();
+        salaireBase = employe.getSalaireBase();
+        prime = employe.getPrime();
+        email = employe.getEmail();
+
+        EmployeDto employeDto = new EmployeDto( idEmploye, email, prime, poste, salaireBase, lastName, firstName );
 
         return employeDto;
     }
@@ -61,7 +83,7 @@ public class EmployeMapperImpl implements EmployeMapper {
 
         List<EmployeDto> list = new ArrayList<EmployeDto>( employes.size() );
         for ( Employe employe : employes ) {
-            list.add( toDto( employe ) );
+            list.add( toEmployeDto( employe ) );
         }
 
         return list;
