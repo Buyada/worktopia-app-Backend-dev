@@ -11,10 +11,11 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 @Configuration
 public interface BulletinPaieMapper {
-   // BulletinPaie toBulletinPaie(BulletinPaieDto bulletinPaieDto);
-   @Mapping(target = "employe", source = "employe")
+
+    BulletinPaie toBulletinPaie(BulletinPaieDto bulletinPaieDto);
+  @Mapping(target = "employe", source = "employe")
     BulletinPaieDto toBulletinPaieDto(BulletinPaie bulletinPaie);
-    @Mapping(target = "employe", source = "employe")
+   // @Mapping//(target = "employe", source = "employe")
     List<BulletinPaieDto> toDtoLis(List<BulletinPaie> bulletinPaie);
 
 }

@@ -1,6 +1,7 @@
 package com.groupe.Worktopia.service.Employe;
 
 
+import com.groupe.Worktopia.dto.BulletinPaieDto.BulletinPaieDto;
 import com.groupe.Worktopia.dto.EmployeDto.EmployeDto;
 import com.groupe.Worktopia.entities.BulletinPaie;
 import com.groupe.Worktopia.entities.Employe;
@@ -13,8 +14,9 @@ import com.groupe.Worktopia.repository.EmployeRepo;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Service
 public class EmployeServiceImpl implements EmployeService {
@@ -22,10 +24,12 @@ public class EmployeServiceImpl implements EmployeService {
     private EmployeRepo employeRepo;
     private BulletinPaieRepo bulletinPaieRepo;
     private EmployeMapper employeMapper;
-    public EmployeServiceImpl(EmployeRepo employeRepo, BulletinPaieRepo bulletinPaieRepo, EmployeMapper employeMapper){
+    private BulletinPaieMapper bulletinPaieMapper;
+    public EmployeServiceImpl(EmployeRepo employeRepo, BulletinPaieRepo bulletinPaieRepo, EmployeMapper employeMapper,BulletinPaieMapper bulletinPaieMapper){
         this.employeRepo = employeRepo;
         this.bulletinPaieRepo = bulletinPaieRepo;
         this.employeMapper = employeMapper;
+        this.bulletinPaieMapper = bulletinPaieMapper;
     }
 
 
@@ -51,10 +55,11 @@ public class EmployeServiceImpl implements EmployeService {
             bulletin.setSalaireBrut(salaireBrut);
             bulletin.setSalaireNet(salaireNet);
             bulletin.setDateModification(LocalDateTime.now());
+
+            bulletinPaieRepo.save(bulletin);
+
         }
 
-
-        bulletinPaieRepo.saveAll(bulletinsPaie);
 
         Employe employeMisAJour = employeRepo.save(employeExistant);
 
@@ -63,8 +68,10 @@ public class EmployeServiceImpl implements EmployeService {
 
     @Override
     public List<EmployeDto> getAll() {
-        List<Employe> employes = this.employeRepo.findAll();
-        return this.employeMapper.toDtoList(employes);
+        this.employeRepo.findAll();
+        List<Employe> employ = this.employeRepo.findAll();
+
+        return this.employeMapper.toDtoEmployeList(employ);
     }
 
     @Override
