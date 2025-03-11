@@ -11,6 +11,6 @@ public interface CategorieService {
     void addCategorie(CategorieReqDTO categorieReqDTO);
     CategorieResDTO getCategorieById(Integer CategorieId);
     List<CategorieResDTO> getCategories();
-void updateCategorieById(Integer categorieId, Categorie categorie);
+void updateCategorieById(Integer categorieId, CategorieResDTO categorieResDTO);
     void deleteById(Integer CategorieId);
 }

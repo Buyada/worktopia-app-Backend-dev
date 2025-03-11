@@ -40,8 +40,8 @@ public class CategorieController {
      }
 
      @PutMapping(path = "api/categorie/update_by_id/{categorieId}")
-     public ResponseEntity<String> updateEntityById(Integer categorieId, Categorie categorie){
-         this.categorieService.updateCategorieById(categorieId, categorie);
+     public ResponseEntity<String> updateEntityById(Integer categorieId, CategorieResDTO categorieResDTO){
+         this.categorieService.updateCategorieById(categorieId, categorieResDTO);
          return ResponseEntity
                  .status(202)
                  .body("Category updated suceessfully");

@@ -55,12 +55,12 @@ public class CategorieServiceImpl implements CategorieService {
     }
 
     @Override
-    public void updateCategorieById(Integer categorieId, Categorie categorie) {
+    public void updateCategorieById(Integer categorieId, CategorieResDTO categorieResDTO) {
 
         Categorie categorieToUpdate = this.categorieRepo.findById(categorieId).orElseThrow(()-> new ResourceNotFoundException("Resource not Found"));
-        categorieToUpdate.setIntitule(categorie.getIntitule());
-        categorieToUpdate.setDescription(categorie.getDescription());
-        categorieToUpdate.setTypeFormation(categorie.getTypeFormation());
+        categorieToUpdate.setIntitule(categorieResDTO.getIntitule());
+        categorieToUpdate.setDescription(categorieResDTO.getDescription());
+        categorieToUpdate.setTypeFormation(categorieResDTO.getTypeFormation());
         categorieToUpdate.setUpdatedAt(new Date());
         this.categorieRepo.saveAndFlush(categorieToUpdate);
 
