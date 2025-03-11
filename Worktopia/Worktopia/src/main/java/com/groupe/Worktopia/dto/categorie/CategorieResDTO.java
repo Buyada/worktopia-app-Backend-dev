@@ -22,31 +22,5 @@ public class CategorieResDTO {
     @NotNull(message = "this field couldn't be null !")
     private String typeFormation;
 
-    public void setCategorieId(Integer categorieId){
-        this.categorieId = categorieId;
-    }
-    public Integer getCategorie(){
-        return categorieId;
-    }
-    public void setIntitule(String intitule){
-        this.intitule = intitule;
-    }
-    public String getIntitule()
-    {
-        return intitule;
-    }
 
-    public void setDescription(String description){
-        this.description = description;
-    }
-    public String getDescription(){
-        return description;
-    }
-
-    public void setTypeFormation(String typeFormation){
-        this.typeFormation = typeFormation;
-    }
-    public String getTypeFormation(){
-        return  typeFormation;
-    }
 }

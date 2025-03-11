@@ -20,30 +20,5 @@ public class FormationResDTO {
     private String description;
     private Integer duree;
 
-    public void setFormationId(Integer formationId){
-        this.formationId = formationId;
-    }
-    public Integer getFormationId(){
-        return formationId;
-    }
-    public void setIntitule(String intitule){
-        this.intitule = intitule;
-    }
-    public String getIntitule(){
-        return intitule;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
 
-    public String getDescription(){
-        return description;
-    }
-
-    public void setDuree(Integer duree){
-        this.duree = duree;
-    }
-    public Integer getDuree(){
-        return  duree;
-    }
 }

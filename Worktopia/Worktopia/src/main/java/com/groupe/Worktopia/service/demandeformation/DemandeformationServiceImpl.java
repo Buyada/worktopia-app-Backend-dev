@@ -1,6 +1,9 @@
 package com.groupe.Worktopia.service.demandeformation;
 
+import com.groupe.Worktopia.dto.demandeformation.DemandeformationReqDTO;
+import com.groupe.Worktopia.dto.demandeformation.DemandeformationResDTO;
 import com.groupe.Worktopia.entities.Demandeformation;
+import com.groupe.Worktopia.mapper.DemandeformationMapper;
 import com.groupe.Worktopia.repository.DemandeformationRepo;
 import org.springframework.stereotype.Service;
 
@@ -8,20 +11,26 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class DemandeformationServiceImpl  implements  DemanformationService{
+public class DemandeformationServiceImpl  implements DemandeformationService {
     public final DemandeformationRepo demandeformationRepo;
-    public DemandeformationServiceImpl(DemandeformationRepo demandeformationRepo){
+    private final DemandeformationMapper demandeformationMapper;
+    public DemandeformationServiceImpl(DemandeformationRepo demandeformationRepo, DemandeformationMapper demandeformationMapper){
         this.demandeformationRepo = demandeformationRepo;
+        this.demandeformationMapper = demandeformationMapper;
     }
     @Override
-    public void addDemande(Demandeformation demandeformation) {
+    public void addDemande(DemandeformationReqDTO demandeformationReqDTO) {
+
+        Demandeformation demandeformation = this.demandeformationMapper
+                .getDemandeformationFromDemandeFormationReqDTO(demandeformationReqDTO);
         demandeformation.setCreatedAt(new Date());
         this.demandeformationRepo.save(demandeformation);
     }
 
     @Override
-    public Demandeformation getDemandeById(Integer demandeformationId) {
-        return this.demandeformationRepo.findById(demandeformationId).get();
+    public DemandeformationResDTO getDemandeById(Integer demandeformationId) {
+        Demandeformation demandeformation = this.demandeformationRepo.findById(demandeformationId).get();
+        return this.demandeformationMapper.getDemandeResDTOFromDemandeformation(demandeformation);
     }
 
     @Override

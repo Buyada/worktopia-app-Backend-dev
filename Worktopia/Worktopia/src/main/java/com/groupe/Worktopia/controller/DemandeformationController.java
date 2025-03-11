@@ -1,7 +1,9 @@
 package com.groupe.Worktopia.controller;
 
+import com.groupe.Worktopia.dto.demandeformation.DemandeformationReqDTO;
+import com.groupe.Worktopia.dto.demandeformation.DemandeformationResDTO;
 import com.groupe.Worktopia.entities.Demandeformation;
-import com.groupe.Worktopia.service.demandeformation.DemanformationService;
+import com.groupe.Worktopia.service.demandeformation.DemandeformationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,14 +11,14 @@ import java.util.List;
 
 @RestController
 public class DemandeformationController {
-    public final DemanformationService demanformationService;
-    public DemandeformationController(DemanformationService demanformationService){
-        this.demanformationService = demanformationService;
+    public final DemandeformationService demandeformationService;
+    public DemandeformationController(DemandeformationService demandeformationService){
+        this.demandeformationService = demandeformationService;
     }
 
     @PostMapping(path = "api/demandeformation/add")
-    public ResponseEntity<String> addDemandeformation(@RequestBody Demandeformation demandeformation){
-        this.demanformationService.addDemande(demandeformation);
+    public ResponseEntity<String> addDemandeformation(@RequestBody DemandeformationReqDTO demandeformationReqDTO){
+        this.demandeformationService.addDemande(demandeformationReqDTO);
 
         return  ResponseEntity
                 .status(200)
@@ -25,10 +27,10 @@ public class DemandeformationController {
     }
 
     @GetMapping(path = "api/demandeformation/get_by_id/{demandeformationId}")
-    public ResponseEntity<Demandeformation>  getDemandeById(Integer demandeformationId){
+    public ResponseEntity<DemandeformationResDTO>  getDemandeById(Integer demandeformationId){
         return ResponseEntity
                 .status(202)
-                .body(this.demanformationService.getDemandeById(demandeformationId));
+                .body(this.demandeformationService.getDemandeById(demandeformationId));
     }
 
     @GetMapping(path = "api/demandeformation/get_all")
@@ -36,12 +38,12 @@ public class DemandeformationController {
 
         return ResponseEntity
                 .status(202)
-                .body(this.demanformationService.getDemandes());
+                .body(this.demandeformationService.getDemandes());
     }
 
     @PutMapping(path = "api/demandeformation/update_by_id/{demandeformationId}")
     public ResponseEntity<String> updateDemande(Integer demandeformationId, @RequestBody Demandeformation demandeformation){
-        this.demanformationService.updateDemande(demandeformationId, demandeformation);
+        this.demandeformationService.updateDemande(demandeformationId, demandeformation);
         return ResponseEntity
                 .status(202)
                 .body("Demande updated successfully !");
@@ -50,7 +52,7 @@ public class DemandeformationController {
 
     @PutMapping(path = "api/demandeformation/delete_by_id/{demandeformationId}")
     public ResponseEntity<String> deleteDemande(Integer demandeformationId){
-        this.demanformationService.deleteDemande(demandeformationId);
+        this.demandeformationService.deleteDemande(demandeformationId);
 
         return ResponseEntity
                 .status(202)
