@@ -42,8 +42,8 @@ public class DemandeformationController {
     }
 
     @PutMapping(path = "api/demandeformation/update_by_id/{demandeformationId}")
-    public ResponseEntity<String> updateDemande(Integer demandeformationId, @RequestBody Demandeformation demandeformation){
-        this.demandeformationService.updateDemande(demandeformationId, demandeformation);
+    public ResponseEntity<String> updateDemande(Integer demandeformationId, @RequestBody DemandeformationReqDTO demandeformationReqDTO){
+        this.demandeformationService.updateDemande(demandeformationId, demandeformationReqDTO);
         return ResponseEntity
                 .status(202)
                 .body("Demande updated successfully !");

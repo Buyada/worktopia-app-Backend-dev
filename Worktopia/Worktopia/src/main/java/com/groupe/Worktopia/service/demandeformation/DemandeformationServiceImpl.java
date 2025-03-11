@@ -40,11 +40,11 @@ public class DemandeformationServiceImpl  implements DemandeformationService {
     }
 
     @Override
-    public void updateDemande(Integer demandeformationId, Demandeformation demandeformation) {
+    public void updateDemande(Integer demandeformationId, DemandeformationReqDTO demandeformationReqDTO) {
         Demandeformation demandeToUpdate = this.demandeformationRepo.findById(demandeformationId).get();
-        demandeToUpdate.setTitreFormation(demandeformation.getTitreFormation());
-        demandeToUpdate.setObjet(demandeformation.getObjet());
-        demandeToUpdate.setCommentaire(demandeformation.getCommentaire());
+        //demandeToUpdate.setTitreFormation(demandeformationResDTO.getTitreFormation());
+        demandeToUpdate.setObjet(demandeformationReqDTO.getObjet());
+        demandeToUpdate.setCommentaire(demandeformationReqDTO.getCommentaire());
         demandeToUpdate.setUpdatedAt(new Date());
         this.demandeformationRepo.saveAndFlush(demandeToUpdate);
     }

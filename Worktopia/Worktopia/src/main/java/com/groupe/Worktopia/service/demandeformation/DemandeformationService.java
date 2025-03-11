@@ -10,6 +10,6 @@ public interface DemandeformationService {
     void addDemande(DemandeformationReqDTO demandeformationReqDTO);
     DemandeformationResDTO getDemandeById(Integer demandeformationId);
     List<DemandeformationResDTO> getDemandes();
-    void updateDemande(Integer demandeformationId, Demandeformation demandeformation);
+    void updateDemande(Integer demandeformationId, DemandeformationReqDTO demandeformationReqDTO);
     void deleteDemande(Integer demandeformationId);
 }
