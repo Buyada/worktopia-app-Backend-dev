@@ -1,8 +1,10 @@
 package com.groupe.Worktopia.service.formation;
 
+import com.groupe.Worktopia.dto.formation.FormationReqDTO;
 import com.groupe.Worktopia.entities.Formation;
 import com.groupe.Worktopia.exception.ResourceExistException;
 import com.groupe.Worktopia.exception.ResourceNotFoundException;
+import com.groupe.Worktopia.mapper.FormationMapper;
 import com.groupe.Worktopia.repository.FormationRepo;
 import org.springframework.stereotype.Service;
 
@@ -12,19 +14,24 @@ import java.util.Optional;
 
 @Service
 public class FormationServiceImpl implements FormationServer{
-    public final FormationRepo formationRepo;
+    private final FormationRepo formationRepo;
+    private final FormationMapper formationMapper;
 
-    public FormationServiceImpl(FormationRepo formationRepo){
+
+    public FormationServiceImpl(FormationRepo formationRepo, FormationMapper formationMapper){
         this.formationRepo = formationRepo;
+        this.formationMapper = formationMapper;
     }
 
 
     @Override
-    public void addFormation(Formation formation) {
+    public void addFormation(FormationReqDTO formationReqDTO) {
 
-        Optional<Formation> formationToAdd = this.formationRepo.findByIntitule(formation.getIntitule());
+        Optional<Formation> formationToAdd = this.formationRepo.findByIntitule(formationReqDTO.getIntitule());
         if(formationToAdd.isPresent())
             throw new ResourceExistException("Resource already exist!");
+
+        Formation formation = this.formationMapper.getFormationFromFormationReqDTO(formationReqDTO);
         formation.setCreatedAt(new Date());
         this.formationRepo.save(formation);
     }

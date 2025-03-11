@@ -1,7 +1,9 @@
 package com.groupe.Worktopia.controller;
 
+import com.groupe.Worktopia.dto.formation.FormationReqDTO;
 import com.groupe.Worktopia.entities.Formation;
 import com.groupe.Worktopia.service.formation.FormationServer;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +18,8 @@ public class FormationController {
     }
 
     @PostMapping(path = "api/formation/add")
-    public ResponseEntity<String> addFormation(@RequestBody Formation formation){
-        this.formationServer.addFormation(formation);
+    public ResponseEntity<String> addFormation(@Valid @RequestBody FormationReqDTO formationReqDTO){
+        this.formationServer.addFormation(formationReqDTO   );
         return ResponseEntity
                 .status(200)
                 .body("Formation added successfully!");
