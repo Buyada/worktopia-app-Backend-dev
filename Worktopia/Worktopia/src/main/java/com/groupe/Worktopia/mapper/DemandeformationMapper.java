@@ -7,9 +7,12 @@ import com.groupe.Worktopia.entities.Demandeformation;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
-@Component
+//@Component
 public interface DemandeformationMapper {
     Demandeformation getDemandeformationFromDemandeFormationReqDTO(DemandeformationReqDTO demandeformationReqDTO);
     DemandeformationResDTO getDemandeResDTOFromDemandeformation(Demandeformation demandeformation);
+    List<DemandeformationResDTO> getDemandeResDTOAllFromAllDemandeformation(List<Demandeformation> demandeformations);
 }

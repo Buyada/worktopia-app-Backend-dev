@@ -9,7 +9,7 @@ import java.util.List;
 public interface DemandeformationService {
     void addDemande(DemandeformationReqDTO demandeformationReqDTO);
     DemandeformationResDTO getDemandeById(Integer demandeformationId);
-    List<Demandeformation> getDemandes();
+    List<DemandeformationResDTO> getDemandes();
     void updateDemande(Integer demandeformationId, Demandeformation demandeformation);
     void deleteDemande(Integer demandeformationId);
 }

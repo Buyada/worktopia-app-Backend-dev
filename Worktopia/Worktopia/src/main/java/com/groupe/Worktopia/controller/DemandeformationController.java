@@ -34,7 +34,7 @@ public class DemandeformationController {
     }
 
     @GetMapping(path = "api/demandeformation/get_all")
-    public ResponseEntity<List<Demandeformation>> getAllDemande(){
+    public ResponseEntity<List<DemandeformationResDTO>> getAllDemande(){
 
         return ResponseEntity
                 .status(202)

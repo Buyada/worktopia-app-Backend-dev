@@ -34,8 +34,9 @@ public class DemandeformationServiceImpl  implements DemandeformationService {
     }
 
     @Override
-    public List<Demandeformation> getDemandes() {
-        return this.demandeformationRepo.findAll();
+    public List<DemandeformationResDTO> getDemandes() {
+        List<Demandeformation> demandeformations = this.demandeformationRepo.findAll();
+        return this.demandeformationMapper.getDemandeResDTOAllFromAllDemandeformation(demandeformations);
     }
 
     @Override
