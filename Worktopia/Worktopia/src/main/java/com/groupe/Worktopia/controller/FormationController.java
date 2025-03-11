@@ -1,6 +1,7 @@
 package com.groupe.Worktopia.controller;
 
 import com.groupe.Worktopia.dto.formation.FormationReqDTO;
+import com.groupe.Worktopia.dto.formation.FormationResDTO;
 import com.groupe.Worktopia.entities.Formation;
 import com.groupe.Worktopia.service.formation.FormationServer;
 import jakarta.validation.Valid;
@@ -26,14 +27,14 @@ public class FormationController {
     }
 
     @GetMapping(path = "api/formation/get_by_id/{formationId}")
-    public ResponseEntity<Formation> getFormationById(Integer formationId){
+    public ResponseEntity<FormationResDTO> getFormationById(Integer formationId){
         return  ResponseEntity
                 .status(202)
                 .body(this.formationServer.getFormationById(formationId));
     }
 
     @GetMapping(path = "api/formation/get_all")
-    public ResponseEntity<List<Formation>> getFormations(){
+    public ResponseEntity<List<FormationResDTO>> getFormations(){
 
         return  ResponseEntity
                 .status(202)
@@ -42,8 +43,8 @@ public class FormationController {
 
     @PutMapping(path = "api/formation/update_by_id/{formationId}")
 
-    public ResponseEntity<String> updateFormation( Integer formationId,  @RequestBody Formation formation){
-        this.formationServer.updateFormationById(formationId, formation);
+    public ResponseEntity<String> updateFormation( Integer formationId,  @RequestBody FormationReqDTO                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          formationReqDTO){
+        this.formationServer.updateFormationById(formationId, formationReqDTO);
         return ResponseEntity
                 .status(202)
                 .body("Formation updated successfully !");

@@ -1,6 +1,7 @@
 package com.groupe.Worktopia.service.formation;
 
 import com.groupe.Worktopia.dto.formation.FormationReqDTO;
+import com.groupe.Worktopia.dto.formation.FormationResDTO;
 import com.groupe.Worktopia.entities.Formation;
 import com.groupe.Worktopia.exception.ResourceExistException;
 import com.groupe.Worktopia.exception.ResourceNotFoundException;
@@ -37,23 +38,25 @@ public class FormationServiceImpl implements FormationServer{
     }
 
     @Override
-    public Formation getFormationById(Integer formationId) {
-        return this.formationRepo.findById(formationId)
+    public FormationResDTO getFormationById(Integer formationId) {
+        Formation formation = this.formationRepo.findById(formationId)
                 .orElseThrow(()-> new ResourceNotFoundException("Record not found !"));
+        return this.formationMapper.getFormationResDTOFromFormation(formation);
     }
 
     @Override
-    public List<Formation> getFormations() {
-        return this.formationRepo.findAll();
+    public List<FormationResDTO> getFormations() {
+        List<Formation>  formations = this.formationRepo.findAll();
+        return this.formationMapper.getAllFormationsFromAllFormation(formations);
     }
 
     @Override
-    public void updateFormationById(Integer formationId, Formation formation) {
+    public void updateFormationById(Integer formationId, FormationReqDTO formationReqDTO) {
         Formation formationToUpdate = this.formationRepo.findById(formationId)
                 .orElseThrow(()-> new ResourceNotFoundException("Record to update not found !"));
-        formationToUpdate.setIntitule(formation.getIntitule());
-        formationToUpdate.setDescription(formation.getDescription());
-        formationToUpdate.setDuree(formation.getDuree());
+        formationToUpdate.setIntitule(formationReqDTO.getIntitule());
+        formationToUpdate.setDescription(formationReqDTO.getDescription());
+        formationToUpdate.setDuree(formationReqDTO.getDuree());
         formationToUpdate.setUpdatedAt(new Date());
 
         this.formationRepo.saveAndFlush(formationToUpdate);
