@@ -1,6 +1,7 @@
 package com.groupe.Worktopia.controller;
 
 import com.groupe.Worktopia.dto.categorie.CategorieReqDTO;
+import com.groupe.Worktopia.dto.categorie.CategorieResDTO;
 import com.groupe.Worktopia.entities.Categorie;
 import com.groupe.Worktopia.service.categorie.CategorieService;
 import jakarta.validation.Valid;
@@ -25,7 +26,7 @@ public class CategorieController {
      }
 
      @GetMapping(path = "api/categorie/get_by_id/{categorieId}")
-    public ResponseEntity<Categorie> getCategorieById(Integer categorieId){
+    public ResponseEntity<CategorieResDTO> getCategorieById(Integer categorieId){
          return ResponseEntity
                  .status(202).
                  body(this.categorieService.getCategorieById(categorieId));

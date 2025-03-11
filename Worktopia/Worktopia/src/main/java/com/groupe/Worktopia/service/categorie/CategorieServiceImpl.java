@@ -2,6 +2,7 @@ package com.groupe.Worktopia.service.categorie;
 
 
 import com.groupe.Worktopia.dto.categorie.CategorieReqDTO;
+import com.groupe.Worktopia.dto.categorie.CategorieResDTO;
 import com.groupe.Worktopia.entities.Categorie;
 import com.groupe.Worktopia.exception.ResourceExistException;
 import com.groupe.Worktopia.exception.ResourceNotFoundException;
@@ -40,11 +41,11 @@ public class CategorieServiceImpl implements CategorieService {
     }
 
     @Override
-    public Categorie getCategorieById(Integer categorieId) {
-
-        return this.categorieRepo
+    public CategorieResDTO getCategorieById(Integer categorieId) {
+        Categorie categorie = this.categorieRepo
                 .findById(categorieId)
                 .orElseThrow(()->new ResourceNotFoundException("Resource not found !"));
+        return this.categorieMapper.getCategorieResDTOFromCategorie(categorie);
     }
 
     @Override
