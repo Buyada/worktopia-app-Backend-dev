@@ -33,7 +33,7 @@ public class CategorieController {
      }
 
      @GetMapping(path = "api/categorie/get_all")
-    public ResponseEntity<List<Categorie>> listeCategorie(){
+    public ResponseEntity<List<CategorieResDTO>> listeCategorie(){
          return ResponseEntity
                  .status(202)
                  .body(this.categorieService.getCategories());

@@ -10,7 +10,7 @@ import java.util.List;
 public interface CategorieService {
     void addCategorie(CategorieReqDTO categorieReqDTO);
     CategorieResDTO getCategorieById(Integer CategorieId);
-    List<Categorie> getCategories();
+    List<CategorieResDTO> getCategories();
 void updateCategorieById(Integer categorieId, Categorie categorie);
     void deleteById(Integer CategorieId);
 }

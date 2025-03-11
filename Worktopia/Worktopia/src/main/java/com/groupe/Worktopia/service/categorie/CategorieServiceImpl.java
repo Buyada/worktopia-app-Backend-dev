@@ -49,8 +49,9 @@ public class CategorieServiceImpl implements CategorieService {
     }
 
     @Override
-    public List<Categorie> getCategories() {
-        return this.categorieRepo.findAll();
+    public List<CategorieResDTO> getCategories() {
+        List<Categorie> categories = this.categorieRepo.findAll();
+        return this.categorieMapper.getAllCategoriesResDTOFromAllCategories(categories);
     }
 
     @Override
