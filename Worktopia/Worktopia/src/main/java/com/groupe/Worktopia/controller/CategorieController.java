@@ -1,7 +1,9 @@
 package com.groupe.Worktopia.controller;
 
+import com.groupe.Worktopia.dto.categorie.CategorieReqDTO;
 import com.groupe.Worktopia.entities.Categorie;
 import com.groupe.Worktopia.service.categorie.CategorieService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,8 +17,8 @@ public class CategorieController {
      }
 
      @PostMapping(path = "api/categorie/add")
-     public ResponseEntity<String> addCategorie(@RequestBody Categorie categorie){
-        this.categorieService.addCategorie(categorie);
+     public ResponseEntity<String> addCategorie(@Valid @RequestBody CategorieReqDTO categorieReqDTO){
+        this.categorieService.addCategorie(categorieReqDTO);
         return ResponseEntity
             .status(200)
             .body("Category added successfully");

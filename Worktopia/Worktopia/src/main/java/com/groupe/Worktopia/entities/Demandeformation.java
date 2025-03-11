@@ -28,6 +28,7 @@ public class Demandeformation implements Serializable {
     private Date updatedAt;
 
     @ManyToOne
+    //@JoinColumn(name = "formation_id")
     private Formation formation;
 
 //    @ManyToOne

@@ -1,10 +1,13 @@
 package com.groupe.Worktopia.service.categorie;
 
 
+import com.groupe.Worktopia.dto.categorie.CategorieReqDTO;
 import com.groupe.Worktopia.entities.Categorie;
 import com.groupe.Worktopia.exception.ResourceExistException;
 import com.groupe.Worktopia.exception.ResourceNotFoundException;
+import com.groupe.Worktopia.mapper.CategorieMapper;
 import com.groupe.Worktopia.repository.CategorieRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -13,19 +16,25 @@ import java.util.Optional;
 
 @Service
 public class CategorieServiceImpl implements CategorieService {
+    @Autowired
+    private final CategorieRepo categorieRepo;
+    @Autowired
+    private final CategorieMapper categorieMapper;
 
-    public final CategorieRepo categorieRepo;
-    public CategorieServiceImpl(CategorieRepo categorieRepo){
+    public CategorieServiceImpl(CategorieRepo categorieRepo, CategorieMapper categorieMapper){
 
         this.categorieRepo = categorieRepo;
+
+        this.categorieMapper = categorieMapper;
     }
 
     @Override
-    public void addCategorie(Categorie categorie) {
-        Optional<Categorie> CategorieAdd = this.categorieRepo.findByIntitule(categorie.getIntitule());
+    public void addCategorie(CategorieReqDTO categorieReqDTO) {
+        Optional<Categorie> CategorieAdd = this.categorieRepo.findByIntitule(categorieReqDTO.getIntitule());
         if(CategorieAdd.isPresent())
             throw new ResourceExistException("The record already exists !");
 
+        Categorie categorie = this.categorieMapper.getCategorieFromCategorieReqDTO(categorieReqDTO);
             categorie.setCreatedAt(new Date());
         this.categorieRepo.save(categorie);
     }
