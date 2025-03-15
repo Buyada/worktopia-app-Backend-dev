@@ -1,10 +1,15 @@
 package com.groupe.Worktopia.controller;
 
+import com.groupe.Worktopia.dto.PageRequestDTO;
 import com.groupe.Worktopia.dto.formation.FormationReqDTO;
 import com.groupe.Worktopia.dto.formation.FormationResDTO;
+import com.groupe.Worktopia.entities.Categorie;
 import com.groupe.Worktopia.entities.Formation;
+import com.groupe.Worktopia.repository.FormationRepo;
 import com.groupe.Worktopia.service.formation.FormationServer;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +19,10 @@ import java.util.List;
 public class FormationController {
 
     public  final FormationServer formationServer;
-    public FormationController(FormationServer formationServer){
+    public final FormationRepo formationRepo;
+    public FormationController(FormationServer formationServer, FormationRepo formationRepo){
         this.formationServer = formationServer;
+        this.formationRepo = formationRepo;
     }
 
     @PostMapping(path = "api/formation/add")
@@ -64,4 +71,11 @@ public class FormationController {
 //                .status(200)
 //                .body(this.formationServer.testGetFormationByCategory(categorieId));
 //    }
+
+    @PostMapping(path = "api/formation/pagination")
+    public Page<Formation> getAllFormationUsingPagination(@RequestBody PageRequestDTO pageRequestDTO){
+        Pageable pageable = new PageRequestDTO().getPageable(pageRequestDTO);
+        Page<Formation> formationPage = this.formationRepo.findAll(pageable);
+        return  formationPage;
+    }
 }
