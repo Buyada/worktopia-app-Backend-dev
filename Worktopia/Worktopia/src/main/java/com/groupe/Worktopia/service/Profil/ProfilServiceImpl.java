@@ -24,12 +24,12 @@ public class ProfilServiceImpl implements ProfilService{
     @Override
     public void addProfil(Profil profil) {
 
-        Optional<Profil> addProfil = this.profilRepo.findByFirstname(profil.getFirstname());
+        Optional<Profil> addProfil = this.profilRepo.findByusername(profil.getUsername());
         if (addProfil.isPresent())
-            throw new ResourceExistException("The profile already exist !");
+           throw new ResourceExistException("The profile already exist !");
         profil.setCreatedAt(new Date());
         this.profilRepo.save(profil);
-    }
+   }
 
     @Override
     public Profil getProfil(int id) {
@@ -48,11 +48,7 @@ public class ProfilServiceImpl implements ProfilService{
         Profil updatePro = this.profilRepo.findById(profilId)
                 .orElseThrow(()->new ResourceNotFoundException("Resource not found !"));;
 
-        updatePro.setFirstname(profil.getFirstname());
-        updatePro.setLastname(profil.getLastname());
-        updatePro.setNumerotelephone(profil.getNumerotelephone());
-        updatePro.setDatenaissance(profil.getDatenaissance());
-        updatePro.setAddresse(profil.getAddresse());
+        updatePro.setUsername(profil.getUsername());
         updatePro.setCv(profil.getCv());
         updatePro.setUpdatedAt(new Date());
         this.profilRepo.saveAndFlush(updatePro);

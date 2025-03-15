@@ -45,9 +45,13 @@ public class UserServiceImpl implements UserService{
     public void updateUser(Integer userId, User user) {
             User userUpdate = this.userRepo.findById(userId)
                     .orElseThrow(()->new ResourceNotFoundException("Record to update not found"));
-            userUpdate.setUsername(user.getUsername());
+            userUpdate.setFirstname(user.getFirstname());
+            userUpdate.setLastname(user.getLastname());
             userUpdate.setEmail(user.getEmail());
-            userUpdate.setMotdePasse(user.getMotdePasse());
+             userUpdate.setNumeroTelephone(user.getNumeroTelephone());
+           userUpdate.setDateNaissance(user.getDateNaissance());
+           userUpdate.setAddresse(user.getAddresse());
+            userUpdate.setMotDePasse(user.getMotDePasse());
 
             this.userRepo.saveAndFlush(userUpdate);
     }

@@ -22,7 +22,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 
 public class User implements Serializable {
     @Serial
@@ -30,22 +30,29 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
+
     @NotEmpty(message = "please fill this!")
     @NotNull(message = "this field couldn't be null")
-    private String username;
+    private String firstname;
+    @NotNull(message = "this field couldn't be null")
+    private String lastname;
     @Email(message = "email is not correct !")
-private String email;
-    private String motdePasse;
-
+    private String email;
+    private Integer numeroTelephone;
+    private String dateNaissance;
+    private String addresse;
+    @Lob
+    private String motDePasse;
     private Date createdAt;
     private  Date updateAt;
 
 
     @ManyToOne
-    @JoinColumn(name = "profilId")  // Clé étrangère vers Profil
+//  @JoinColumn(name = "profil_id")
     private Profil profil;
 
-    @ManyToOne
-    private Role roles;
 
+    @ManyToOne
+    @JoinColumn(name = "roleId")
+    private Role role;
 }

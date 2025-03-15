@@ -21,7 +21,7 @@ public class RoleServiceImpl implements RoleService{
 
     @Override
     public void addRole(Role role) {
-        Optional<Role> addRole = this.roleRepo.findByName(role.getName());
+        Optional<Role> addRole = this.roleRepo.findByRolename(role.getRolename());
         if(addRole.isPresent())
             throw new ResourceExistException("The role already exist !");
         role.setCreatedAt(new Date());
@@ -45,7 +45,7 @@ public class RoleServiceImpl implements RoleService{
                 .orElseThrow(
                         ()-> new ResourceNotFoundException("Resource notfound !")
                 );
-        roleToUpdate.setName(role.getName());
+        roleToUpdate.setRolename(role.getRolename());
         roleToUpdate.setUpdateAt(new Date());
         this.roleRepo.saveAndFlush(roleToUpdate);
 

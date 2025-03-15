@@ -19,7 +19,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "profil")
+//@Table(name = "profil")
 
 public class Profil implements Serializable {
 
@@ -30,15 +30,7 @@ public class Profil implements Serializable {
     private Integer profilId;
     @NotEmpty(message = "please fill this!")
     @NotNull(message = "this field couldn't be null")
-    private String firstname;
-    @NotEmpty(message = "please fill this!")
-    @NotNull(message = "this field couldn't be null")
-    private String lastname;
-//    @NotEmpty(message = "please fill this!")
-//    @NotNull(message = "this field couldn't be null")
-    private Integer numerotelephone;
-    private String datenaissance;
-    private String addresse;
+    private String username;
     @Lob
     @Column(name = "cv")
     private byte[] cv;
@@ -46,8 +38,8 @@ public class Profil implements Serializable {
     private Date createdAt;
     private Date updatedAt;// Stocke le CV en base
 
-    @OneToMany(mappedBy = "profilId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<User> users = new ArrayList<>();
+    @OneToMany(mappedBy = "profil", cascade = CascadeType.ALL)
+    private List<User> users;
 
 
 }

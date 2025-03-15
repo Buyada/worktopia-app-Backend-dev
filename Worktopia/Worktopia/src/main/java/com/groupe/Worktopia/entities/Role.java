@@ -21,7 +21,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "role")
+//@Table(name = "role")
 
 public class Role implements Serializable {
     @Serial
@@ -32,10 +32,10 @@ public class Role implements Serializable {
     private Integer roleId;
     @NotEmpty(message = "please fill this!")
     @NotNull(message = "this field couldn't be null")
-    private String name;
+    private String rolename;
     private Date createdAt;
     private  Date updateAt;
 
-    @ManyToMany(mappedBy = "roles")
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<User> user;
 }
