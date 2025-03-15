@@ -1,9 +1,14 @@
 package com.groupe.Worktopia.controller;
 
+import com.groupe.Worktopia.dto.PageRequestDTO;
 import com.groupe.Worktopia.dto.demandeformation.DemandeformationReqDTO;
 import com.groupe.Worktopia.dto.demandeformation.DemandeformationResDTO;
+import com.groupe.Worktopia.entities.Categorie;
 import com.groupe.Worktopia.entities.Demandeformation;
+import com.groupe.Worktopia.repository.DemandeformationRepo;
 import com.groupe.Worktopia.service.demandeformation.DemandeformationService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,8 +17,10 @@ import java.util.List;
 @RestController
 public class DemandeformationController {
     public final DemandeformationService demandeformationService;
-    public DemandeformationController(DemandeformationService demandeformationService){
+    public final DemandeformationRepo demandeformationRepo;
+    public DemandeformationController(DemandeformationService demandeformationService, DemandeformationRepo demandeformationRepo){
         this.demandeformationService = demandeformationService;
+        this.demandeformationRepo = demandeformationRepo;
     }
 
     @PostMapping(path = "api/demandeformation/add")
@@ -47,6 +54,13 @@ public class DemandeformationController {
         return ResponseEntity
                 .status(202)
                 .body("Demande updated successfully !");
+    }
+
+    @PostMapping(path = "api/demandeformation/pagination")
+    public Page<Demandeformation> getAllCategorieUsingPagination(@RequestBody PageRequestDTO pageRequestDTO){
+        Pageable pageable = new PageRequestDTO().getPageable(pageRequestDTO);
+        Page<Demandeformation> demandePage = this.demandeformationRepo.findAll(pageable);
+        return  demandePage;
     }
 
 

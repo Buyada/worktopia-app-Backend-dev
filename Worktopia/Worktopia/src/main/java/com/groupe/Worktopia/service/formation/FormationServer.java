@@ -8,6 +8,10 @@ import java.util.List;
 
 public interface FormationServer {
     void addFormation(FormationReqDTO formationReqDTO);
+
+
+//    List<Formation> testGetFormationByCategory(Integer categorieId);
+
     FormationResDTO getFormationById(Integer formationId);
     List<FormationResDTO> getFormations();
     void updateFormationById(Integer formationId, FormationReqDTO formationReqDTO);

@@ -1,6 +1,7 @@
 package com.groupe.Worktopia.service.categorie;
 
 
+import com.groupe.Worktopia.dto.PageRequestDTO;
 import com.groupe.Worktopia.dto.categorie.CategorieReqDTO;
 import com.groupe.Worktopia.dto.categorie.CategorieResDTO;
 import com.groupe.Worktopia.entities.Categorie;
@@ -8,9 +9,11 @@ import com.groupe.Worktopia.exception.ResourceExistException;
 import com.groupe.Worktopia.exception.ResourceNotFoundException;
 import com.groupe.Worktopia.mapper.CategorieMapper;
 import com.groupe.Worktopia.repository.CategorieRepo;
+import org.hibernate.query.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Pageable;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -48,11 +51,19 @@ public class CategorieServiceImpl implements CategorieService {
         return this.categorieMapper.getCategorieResDTOFromCategorie(categorie);
     }
 
+//    @Override
+//    public List<CategorieResDTO> getCategories() {
+//        List<Categorie> categories = this.categorieRepo.findAll();
+//        return this.categorieMapper.getAllCategoriesResDTOFromAllCategories(categories);
+//    }
+
     @Override
     public List<CategorieResDTO> getCategories() {
         List<Categorie> categories = this.categorieRepo.findAll();
         return this.categorieMapper.getAllCategoriesResDTOFromAllCategories(categories);
     }
+
+
 
     @Override
     public void updateCategorieById(Integer categorieId, CategorieResDTO categorieResDTO) {

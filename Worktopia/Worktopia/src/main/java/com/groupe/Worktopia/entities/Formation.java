@@ -33,6 +33,6 @@ public class Formation implements Serializable {
 
 
     @ManyToOne
-    //@JoinColumn(name = "categorie_id")
+    @JoinColumn(name = "categorie_id")
     private Categorie categorie;
 }

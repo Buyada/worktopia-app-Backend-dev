@@ -1,5 +1,7 @@
 package com.groupe.Worktopia.dto.formation;
 
+import com.groupe.Worktopia.dto.categorie.CategorieResDTO;
+import com.groupe.Worktopia.entities.Categorie;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;

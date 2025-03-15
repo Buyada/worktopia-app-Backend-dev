@@ -22,7 +22,7 @@ public class FormationController {
     public ResponseEntity<String> addFormation(@Valid @RequestBody FormationReqDTO formationReqDTO){
         this.formationServer.addFormation(formationReqDTO   );
         return ResponseEntity
-                .status(200)
+                .status(201)
                 .body("Formation added successfully!");
     }
 
@@ -57,4 +57,11 @@ public class FormationController {
               .status(202)
               .body("Formation deleted succssfully !");
     }
+
+//    @GetMapping(path = "api/formation/get_formation_by_category/{categorieId}")
+//    public ResponseEntity<List<Formation>> gettestGetFormat(@PathVariable Integer  categorieId){
+//        return ResponseEntity
+//                .status(200)
+//                .body(this.formationServer.testGetFormationByCategory(categorieId));
+//    }
 }

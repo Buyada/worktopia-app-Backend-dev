@@ -1,5 +1,6 @@
 package com.groupe.Worktopia.dto.formation;
 
+import com.groupe.Worktopia.entities.Categorie;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -18,6 +19,7 @@ public class FormationReqDTO {
     @NotNull(message = "this field couldn't be null !")
     private String description;
     private Integer duree;
+    private Integer categorieId;
 
     public void setIntitule(String intitule){
         this.intitule = intitule;
@@ -39,4 +41,6 @@ public class FormationReqDTO {
     public Integer getDuree(){
         return  duree;
     }
+
+
 }
