@@ -1,5 +1,6 @@
 package com.groupe.Worktopia.dto.demandeformation;
 
+import com.groupe.Worktopia.entities.Formation;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -17,6 +18,7 @@ public class DemandeformationReqDTO {
     @NotEmpty(message = "please fill this field !")
     @NotNull(message = "this field couldn't be null !")
     private String commentaire;
+    private Integer formationId;
 
     public void setObjet(String objet){this.objet = objet;};
     public String getObjet(){return objet;}
@@ -25,4 +27,11 @@ public class DemandeformationReqDTO {
         this.commentaire = commentaire;
     }
     public String getCommentaire(){return commentaire;}
+
+    public void setFormationId(Integer formationId){
+        this.formationId = formationId;
+    }
+    public Integer getFormationId(){
+        return formationId;
+    }
 }
