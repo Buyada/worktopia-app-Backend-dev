@@ -28,8 +28,6 @@ public class Profil implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer profilId;
-    @NotEmpty(message = "please fill this!")
-    @NotNull(message = "this field couldn't be null")
     private String username;
     @Lob
     @Column(name = "cv")

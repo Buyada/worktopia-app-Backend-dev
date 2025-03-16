@@ -1,5 +1,7 @@
 package com.groupe.Worktopia.controller;
 
+import com.groupe.Worktopia.dto.role.RoleReqDTO;
+import com.groupe.Worktopia.dto.role.RoleResDTO;
 import com.groupe.Worktopia.entities.Role;
 import com.groupe.Worktopia.service.role.RoleService;
 import jakarta.validation.Valid;
@@ -17,8 +19,8 @@ public class RoleController {
     }
 
     @PostMapping(path = "api/role/add")
-    public ResponseEntity<String> addRole(@RequestBody Role role){
-        this.roleService.addRole(role);
+    public ResponseEntity<String> addRole(@RequestBody RoleReqDTO roleReqDTO){
+        this.roleService.addRole(roleReqDTO);
 
         return ResponseEntity
                 .status(202)
@@ -26,7 +28,7 @@ public class RoleController {
     }
 
     @GetMapping(path = "api/role/get_by_id/{roleId}")
-    public ResponseEntity<Role> getRolebyId(@PathVariable Integer roleId){
+    public ResponseEntity<RoleResDTO> getRolebyId(@PathVariable Integer roleId){
 
         return ResponseEntity
                 .status(202)
@@ -35,7 +37,7 @@ public class RoleController {
     }
 
     @GetMapping(path = "api/role/get_all")
-    public ResponseEntity<List<Role>> getRoles(){
+    public ResponseEntity<List<RoleResDTO>> getRoles(){
 
         return ResponseEntity
                 .status(202)
@@ -44,8 +46,8 @@ public class RoleController {
     }
 
     @PutMapping(path = "api/role/updatebyId/{roleId}")
-    public ResponseEntity<String> updateRole(Integer roleId, @Valid @RequestBody Role role){
-        this.roleService.updateRole(roleId, role);
+    public ResponseEntity<String> updateRole(Integer roleId, @Valid @RequestBody RoleReqDTO roleReqDTO){
+        this.roleService.updateRole(roleId, roleReqDTO);
         return  ResponseEntity
                 .status(202)
                 .body("Updated successfully");

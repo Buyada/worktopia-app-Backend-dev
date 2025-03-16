@@ -1,2 +1,17 @@
-package com.groupe.Worktopia.Mapper;public interface UserMapper {
+package com.groupe.Worktopia.mapper;
+
+import com.groupe.Worktopia.dto.user.UserReqDTO;
+import com.groupe.Worktopia.dto.user.UserResDTO;
+import com.groupe.Worktopia.entities.User;
+import org.mapstruct.Mapper;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+@Mapper(componentModel = "spring")
+//@Component
+public interface UserMapper {
+    User getUserFromUserReqDTO(UserReqDTO userReqDTO);
+    UserResDTO getUserResRTOFromUser(User user);
+    List<UserResDTO> getUsersResDTOFromUsers(List<User> users);
+    UserReqDTO UpdateUserResRTOFromUser(User user);
 }

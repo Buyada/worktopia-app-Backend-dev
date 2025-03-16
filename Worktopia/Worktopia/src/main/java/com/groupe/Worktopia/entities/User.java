@@ -31,12 +31,8 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
-    @NotEmpty(message = "please fill this!")
-    @NotNull(message = "this field couldn't be null")
     private String firstname;
-    @NotNull(message = "this field couldn't be null")
     private String lastname;
-    @Email(message = "email is not correct !")
     private String email;
     private Integer numeroTelephone;
     private String dateNaissance;

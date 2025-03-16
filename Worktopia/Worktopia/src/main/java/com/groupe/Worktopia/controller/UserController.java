@@ -1,5 +1,7 @@
 package com.groupe.Worktopia.controller;
 
+import com.groupe.Worktopia.dto.user.UserReqDTO;
+import com.groupe.Worktopia.dto.user.UserResDTO;
 import com.groupe.Worktopia.entities.User;
 import com.groupe.Worktopia.service.User.UserService;
 import jakarta.validation.Valid;
@@ -18,8 +20,8 @@ public class UserController {
     }
 
     @PostMapping(path = "api/user/add")
-    public ResponseEntity<String> addUser(@Valid @RequestBody User user){
-        this.userService.addUser(user);
+    public ResponseEntity<String> addUser(@Valid @RequestBody UserReqDTO userReqDTO){
+        this.userService.addUser(userReqDTO);
 
         return ResponseEntity
                 .status(201)
@@ -27,7 +29,7 @@ public class UserController {
     }
 
     @GetMapping(path = "api/user/get_by_id/{userId}")
-    public ResponseEntity<User> getUser (@PathVariable Integer userId) {
+    public ResponseEntity<UserResDTO> getUser (@PathVariable Integer userId) {
 
         return ResponseEntity
                 .status(200)
@@ -35,15 +37,15 @@ public class UserController {
     }
 
     @GetMapping(path = "api/user/get_all")
-    public ResponseEntity<List<User>> getUser(){
+    public ResponseEntity<List<UserResDTO>> getUser(){
         return ResponseEntity
                 .status(200)
                 .body(this.userService.getUsers());
     }
 
     @PutMapping(path = "api/user/update_by_id")
-    public ResponseEntity<String> userUpdate( Integer userId, @Valid @RequestBody User user){
-        this.userService.updateUser(userId, user);
+    public ResponseEntity<String> userUpdate( Integer userId, @Valid @RequestBody UserReqDTO userReqDTO){
+        this.userService.updateUser(userId, userReqDTO);
 
         return ResponseEntity
                 .status(200)

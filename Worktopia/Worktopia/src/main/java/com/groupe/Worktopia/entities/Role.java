@@ -30,8 +30,6 @@ public class Role implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer roleId;
-    @NotEmpty(message = "please fill this!")
-    @NotNull(message = "this field couldn't be null")
     private String rolename;
     private Date createdAt;
     private  Date updateAt;
