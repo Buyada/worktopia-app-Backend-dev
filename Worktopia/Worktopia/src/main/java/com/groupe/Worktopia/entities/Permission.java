@@ -1,21 +1,16 @@
 package com.groupe.Worktopia.entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Date;
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
+
 @Setter
+@Getter
 @Entity
+@Table(name = "permission")
+@Data
 public class Permission {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +19,19 @@ public class Permission {
     private String raison;
     private Date dateDeRetour;
 
+    @OneToOne
+    @JoinColumn(name = "absence_id")
+    private Absence absence;
 
+    public Permission() {
+    }
+
+    public Permission(Long idPermission, Date dateDepermission, String raison, Date dateDeRetour, Absence absence) {
+        this.idPermission = idPermission;
+        this.dateDepermission = dateDepermission;
+        this.raison = raison;
+        this.dateDeRetour = dateDeRetour;
+        this.absence = absence;
+    }
 
 }

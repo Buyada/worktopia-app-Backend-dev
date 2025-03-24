@@ -1,10 +1,13 @@
 package com.groupe.Worktopia.service.Conge;
 
 import com.groupe.Worktopia.entities.Conge;
+import com.groupe.Worktopia.entities.Permission;
+import com.groupe.Worktopia.exception.ResourceNotFoundException;
 import com.groupe.Worktopia.repository.CongeRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CongeServiceImpl implements CongeService{
@@ -27,7 +30,10 @@ public class CongeServiceImpl implements CongeService{
 
     @Override
     public Conge getCongeById(Long id) {
-        return this.congeRepo.findById(id).get();
+        Optional<Conge> conge = this.congeRepo.findById(id);
+        if (conge.isEmpty())
+            throw new ResourceNotFoundException("this conge was not found");
+        return conge.get();
     }
 
     @Override

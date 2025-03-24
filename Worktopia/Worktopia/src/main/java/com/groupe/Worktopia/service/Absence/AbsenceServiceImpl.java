@@ -1,10 +1,13 @@
 package com.groupe.Worktopia.service.Absence;
 
 import com.groupe.Worktopia.entities.Absence;
+import com.groupe.Worktopia.entities.Permission;
+import com.groupe.Worktopia.exception.ResourceNotFoundException;
 import com.groupe.Worktopia.repository.AbsenceRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AbsenceServiceImpl implements AbsenceService {
@@ -27,7 +30,10 @@ public class AbsenceServiceImpl implements AbsenceService {
 
     @Override
     public Absence getAbsenceById(Long id) {
-        return this.absenceRepo.findById(id).get();
+        Optional<Absence> absence = this.absenceRepo.findById(id);
+        if (absence.isEmpty())
+            throw new ResourceNotFoundException("Absence not found");
+        return absence.get();
     }
 
     @Override
@@ -41,5 +47,15 @@ public class AbsenceServiceImpl implements AbsenceService {
     @Override
     public void deleteAbsence(Long id) {
         this.absenceRepo.deleteById(id);
-    } 
+    }
+
+    @Override
+    public Optional<Absence> findById(Long idAbsence) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Absence save(Absence existingAbsence) {
+        return null;
+    }
 }

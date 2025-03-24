@@ -1,8 +1,6 @@
 package com.groupe.Worktopia.controller;
 
 
-import com.groupe.Worktopia.entities.Absence;
-import com.groupe.Worktopia.entities.Conge;
 import com.groupe.Worktopia.entities.Permission;
 import com.groupe.Worktopia.service.Permission.PermissionService;
 import io.swagger.v3.oas.annotations.Operation;

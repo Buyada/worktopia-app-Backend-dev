@@ -1,10 +1,12 @@
 package com.groupe.Worktopia.service.Permission;
 
 import com.groupe.Worktopia.entities.Permission;
+import com.groupe.Worktopia.exception.ResourceNotFoundException;
 import com.groupe.Worktopia.repository.PermissonRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PermissionServiceImpl implements PermissionService{
@@ -17,6 +19,7 @@ public class PermissionServiceImpl implements PermissionService{
 
     @Override
     public Permission addPermission(Permission permission) {
+        //avant d'ajouter une permission permission
         return this.permissionRepo.save(permission);
     }
 
@@ -27,8 +30,12 @@ public class PermissionServiceImpl implements PermissionService{
 
     @Override
     public Permission getPermissionById(Long id) {
-        return this.permissionRepo.findById(id).get();
-    }
+            Optional<Permission> permission = this.permissionRepo.findById(id);
+            if (permission.isEmpty())
+                throw new ResourceNotFoundException("Permission not found");
+            return permission.get();
+        }
+
 
     @Override
     public Permission updatePermission(Permission newPermission, Long id) {

@@ -2,6 +2,7 @@ package com.groupe.Worktopia.controller;
 
 
 import com.groupe.Worktopia.entities.Absence;
+import com.groupe.Worktopia.exception.ResourceNotFoundException;
 import com.groupe.Worktopia.service.Absence.AbsenceService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class AbsenceController {
@@ -38,26 +40,34 @@ public class AbsenceController {
 
     @GetMapping(path = "api/p1/absence/get_by_id/{idAbsence}")
     public ResponseEntity<Absence> getAbsenceById(@PathVariable Long idAbsence){
-        return ResponseEntity
-                .status(200)
-                .body(this.absenceService.getAbsenceById(idAbsence));
+        Optional<Absence> absence = absenceService.findById(idAbsence);
+        return absence.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseThrow(() -> new ResourceNotFoundException("Absence not found"));
+
+
     }
+@PutMapping(path = "api/p1/absence/update_by_id/{idAbsence}")
+public ResponseEntity<Absence> updateAbsence(@PathVariable Long idAbsence,
+                                             @RequestBody Absence updatedAbsence) {
+    Optional<Absence> existingAbsenceOpt = absenceService.findById(idAbsence);
 
+    if (existingAbsenceOpt.isPresent()) {
+        Absence existingAbsence = existingAbsenceOpt.get();
+        existingAbsence.setNombreAbsence(updatedAbsence.getNombreAbsence());
 
-    @PutMapping(path = "api/p1/absence/update_by_id/{idAbsence}")
-    public ResponseEntity<Absence> updateAbsence(@PathVariable Long idAbsence,
-                                                 @RequestBody Absence absence){
-
-        return ResponseEntity.status(HttpStatus.ACCEPTED)
-                .body(this.absenceService.updateAbsence(absence,idAbsence));
+        Absence savedAbsence = absenceService.save(existingAbsence);
+        return new ResponseEntity<>(savedAbsence, HttpStatus.OK);
+    } else {
+        throw new ResourceNotFoundException("Absence not found with id: " + idAbsence);
     }
+}
 
 
-    @DeleteMapping("api/p1/absence/delete_by_id/{idAbsence}")
-    public ResponseEntity<String> deleteAbsenceById(@PathVariable Long idAbsence){
-        this.absenceService.deleteAbsence(idAbsence);
-        return ResponseEntity
-                .status(202)
-                .body("This absence was deleted successfully ! ");
-    }
+
+
+@DeleteMapping("/api/p1/absence/delete_by_id/{idAbsence}")
+public ResponseEntity<String> deleteAbsenceById(@PathVariable Long idAbsence) {
+    absenceService.deleteAbsence(idAbsence);
+    return ResponseEntity.status(HttpStatus.NO_CONTENT)
+            .body("This absence was deleted successfully!");
+}
 }

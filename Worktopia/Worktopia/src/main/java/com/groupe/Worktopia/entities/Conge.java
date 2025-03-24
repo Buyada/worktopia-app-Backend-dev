@@ -1,20 +1,25 @@
 package com.groupe.Worktopia.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Date;
-@NoArgsConstructor
+
+
+
 @Entity
 public class Conge {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idConge;
     private Date retourConge;
     private String raisonConge;
+
+    public Conge() {
+    }
 
     public Conge(Long idConge, Date retourConge, String raisonConge) {
         this.idConge = idConge;
@@ -22,7 +27,7 @@ public class Conge {
         this.raisonConge = raisonConge;
     }
 
-    public Long getIdConge() { 
+    public Long getIdConge() {
         return idConge;
     }
 
@@ -34,7 +39,7 @@ public class Conge {
         return retourConge;
     }
 
-    public void setRetourConge() {
+    public void setRetourConge(Date retourConge) {
         this.retourConge = retourConge;
     }
 
