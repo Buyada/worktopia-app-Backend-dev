@@ -68,4 +68,7 @@ public class Absence{
     public void setPermission(Permission permission) {
         this.permission = permission;
     }
+
+    public void setCreatedAt(Date date) {
+    }
 }

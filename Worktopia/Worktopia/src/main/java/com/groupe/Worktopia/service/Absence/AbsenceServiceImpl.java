@@ -1,11 +1,14 @@
 package com.groupe.Worktopia.service.Absence;
 
 import com.groupe.Worktopia.entities.Absence;
+import com.groupe.Worktopia.entities.Categorie;
 import com.groupe.Worktopia.entities.Permission;
+import com.groupe.Worktopia.exception.ResourceExistException;
 import com.groupe.Worktopia.exception.ResourceNotFoundException;
 import com.groupe.Worktopia.repository.AbsenceRepo;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,8 +23,15 @@ public class AbsenceServiceImpl implements AbsenceService {
 
     @Override
     public Absence addAbsence(Absence absence) {
-        return this.absenceRepo.save(absence);
+        Optional<Absence> AbsenceAdd = this.absenceRepo.findById(absence.getIdAbsence());
+        if(AbsenceAdd.isPresent())
+            throw new ResourceExistException("This absence already exists !");
+        absence.setCreatedAt(new Date());
+        this.absenceRepo.save(absence);
+        return absence;
     }
+
+
 
     @Override
     public List<Absence> getAllAbsence() {

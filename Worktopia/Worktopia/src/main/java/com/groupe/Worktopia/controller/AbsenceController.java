@@ -24,7 +24,7 @@ public class AbsenceController {
 
     @Operation(summary = "add new Absence ", description = "Allow to add new Absence")
     @PostMapping("api/p1/Absence/add")
-    public ResponseEntity<Absence> addAbsence(@RequestBody @Valid Absence absence){
+    public ResponseEntity addAbsence(@RequestBody @Valid Absence absence){
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(this.absenceService.addAbsence(absence));
