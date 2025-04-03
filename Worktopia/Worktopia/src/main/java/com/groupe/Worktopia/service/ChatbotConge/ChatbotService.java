@@ -17,7 +17,13 @@ public class ChatbotService {
         } else {
             response = "Désolé, je n'ai pas compris votre question.";
         }
-
+        if (userInput.contains("Congé") || userInput.contains("Salut")) {
+            response = "vous voulez savoir à quand vos congés ? si oui, donnez-moi votre ID";
+        } else if (userInput.contains("Absence") || userInput.contains("pas présent")) {
+            response = "Vous aimeriez savoir combien d'absences vous avez eu ce mois ? si oui, donnez-moi votre ID et je pourrais vous informer";
+        } else {
+            response = "Il se peut que vous essayez d'entrer une information que je n'ai pas";
+        }
         return response;
     }
 
