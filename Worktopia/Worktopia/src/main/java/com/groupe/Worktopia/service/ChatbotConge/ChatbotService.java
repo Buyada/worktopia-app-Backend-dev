@@ -6,18 +6,19 @@ import java.util.Map;
 
 @Service
 public class ChatbotService {
-    private final Map<String, String> responses;
+    public String getResponse(String userInput) {
+        String response = "";
 
-    public ChatbotService() {
-        responses = new HashMap<>();
-        responses.put("bonjour", "Bonjour ! Comment puis-je vous aider ?");
-        responses.put("comment ça va ?", "Je suis un chatbot, donc je vais toujours bien !");
-        responses.put("au revoir", "Au revoir ! Passez une bonne journée !");
-        responses.put("merci", "Je vous en pries ! Vous pouvez à tout moment nous contacter au sujet de tout souci à propos de notre plate-forme LogoneDigital sur les Congés et les absences  !");
+        // Exemple de règles simples
+        if (userInput.contains("Bonjour") || userInput.contains("Salut")) {
+            response = "Bonjour, comment puis-je vous aider ?";
+        } else if (userInput.contains("temps") || userInput.contains("météo")) {
+            response = "Je ne peux pas vous donner la météo, mais je peux vous aider pour d'autres questions !";
+        } else {
+            response = "Désolé, je n'ai pas compris votre question.";
+        }
+
+        return response;
     }
 
-    public String getResponse(String message) {
-        message = message.toLowerCase().trim();
-        return responses.getOrDefault(message, "Désolé, je ne comprends pas cette question.");
-    }
 }
