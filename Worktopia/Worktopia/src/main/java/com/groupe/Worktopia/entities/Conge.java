@@ -50,4 +50,8 @@ public class Conge {
     public void setRaisonConge(String raisonConge) {
         this.raisonConge = raisonConge;
     }
+
+    public void setCreatedAt(Date date) {
+
+    }
 }

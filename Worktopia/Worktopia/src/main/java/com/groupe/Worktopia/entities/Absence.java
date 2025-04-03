@@ -70,5 +70,6 @@ public class Absence{
     }
 
     public void setCreatedAt(Date date) {
+
     }
 }

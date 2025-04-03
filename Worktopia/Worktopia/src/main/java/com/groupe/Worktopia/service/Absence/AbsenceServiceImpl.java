@@ -21,14 +21,19 @@ public class AbsenceServiceImpl implements AbsenceService {
         this.absenceRepo = absenceRepo;
     }
 
+
     @Override
     public Absence addAbsence(Absence absence) {
-        Optional<Absence> AbsenceAdd = this.absenceRepo.findById(absence.getIdAbsence());
-        if(AbsenceAdd.isPresent())
-            throw new ResourceExistException("This absence already exists !");
+        if (absence.getIdAbsence() != null) {
+            Optional<Absence> AbsenceAdd = this.absenceRepo.findById(absence.getIdAbsence());
+            if (AbsenceAdd.isPresent()) {
+                throw new ResourceExistException("This absence already exists !");
+            }
+        }
+
+        // Il faut que l'ID soit nul avant de sauvegarder pour qu'il soit auto-incrémenté par la base de données
         absence.setCreatedAt(new Date());
-        this.absenceRepo.save(absence);
-        return absence;
+        return this.absenceRepo.save(absence);  // La base de données s'occupe de l'ID auto-incrémenté
     }
 
 
@@ -56,8 +61,11 @@ public class AbsenceServiceImpl implements AbsenceService {
 
     @Override
     public void deleteAbsence(Long id) {
-        this.absenceRepo.deleteById(id);
+        Absence absenceToDelete = this.absenceRepo.findById(id)
+                .orElseThrow(()->new ResourceNotFoundException("This absence was not found !"));
+        this.absenceRepo.delete(absenceToDelete);
     }
+
 
     @Override
     public Optional<Absence> findById(Long idAbsence) {
