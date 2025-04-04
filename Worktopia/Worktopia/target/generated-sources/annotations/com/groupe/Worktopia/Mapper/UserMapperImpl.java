@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-03-16T16:21:03+0100",
+    date = "2025-04-04T23:14:57+0200",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 23.0.1 (Oracle Corporation)"
 )
 @Component
@@ -24,35 +24,7 @@ public class UserMapperImpl implements UserMapper {
 
         User user = new User();
 
-        user.setFirstname( userReqDTO.getFirstname() );
-        user.setLastname( userReqDTO.getLastname() );
-        user.setEmail( userReqDTO.getEmail() );
-        user.setNumeroTelephone( userReqDTO.getNumeroTelephone() );
-        user.setDateNaissance( userReqDTO.getDateNaissance() );
-        user.setAddresse( userReqDTO.getAddresse() );
-        user.setMotDePasse( userReqDTO.getMotDePasse() );
-
         return user;
-    }
-
-    @Override
-    public UserResDTO getUserResRTOFromUser(User user) {
-        if ( user == null ) {
-            return null;
-        }
-
-        UserResDTO userResDTO = new UserResDTO();
-
-        userResDTO.setUserId( user.getUserId() );
-        userResDTO.setFirstname( user.getFirstname() );
-        userResDTO.setLastname( user.getLastname() );
-        userResDTO.setEmail( user.getEmail() );
-        userResDTO.setNumeroTelephone( user.getNumeroTelephone() );
-        userResDTO.setDateNaissance( user.getDateNaissance() );
-        userResDTO.setAddresse( user.getAddresse() );
-        userResDTO.setMotDePasse( user.getMotDePasse() );
-
-        return userResDTO;
     }
 
     @Override
@@ -70,21 +42,13 @@ public class UserMapperImpl implements UserMapper {
     }
 
     @Override
-    public UserReqDTO UpdateUserResRTOFromUser(User user) {
+    public UserResDTO getUserResRTOFromUser(User user) {
         if ( user == null ) {
             return null;
         }
 
-        UserReqDTO userReqDTO = new UserReqDTO();
+        UserResDTO userResDTO = new UserResDTO();
 
-        userReqDTO.setFirstname( user.getFirstname() );
-        userReqDTO.setLastname( user.getLastname() );
-        userReqDTO.setEmail( user.getEmail() );
-        userReqDTO.setNumeroTelephone( user.getNumeroTelephone() );
-        userReqDTO.setDateNaissance( user.getDateNaissance() );
-        userReqDTO.setAddresse( user.getAddresse() );
-        userReqDTO.setMotDePasse( user.getMotDePasse() );
-
-        return userReqDTO;
+        return userResDTO;
     }
 }

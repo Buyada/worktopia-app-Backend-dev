@@ -22,7 +22,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 
 public class User implements Serializable {
     @Serial
@@ -31,24 +31,21 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
-    private String firstname;
-    private String lastname;
-    private String email;
-    private Integer numeroTelephone;
-    private String dateNaissance;
-    private String addresse;
-    @Lob
+    private String username;
     private String motDePasse;
+    private String email;
     private Date createdAt;
     private  Date updateAt;
+//    private Date derniereconnexion;
 
 
-    @ManyToOne
-//  @JoinColumn(name = "profil_id")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "profil_id")
     private Profil profil;
 
 
-    @ManyToOne
-    @JoinColumn(name = "roleId")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id")
     private Role role;
+
 }

@@ -8,10 +8,18 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 @Mapper(componentModel = "spring")
-//@Component
+@Component
 public interface UserMapper {
     User getUserFromUserReqDTO(UserReqDTO userReqDTO);
-    UserResDTO getUserResRTOFromUser(User user);
+
     List<UserResDTO> getUsersResDTOFromUsers(List<User> users);
-    UserReqDTO UpdateUserResRTOFromUser(User user);
+
+    UserResDTO getUserResRTOFromUser(User user);
+
+
+
+
+//    UserResDTO getUserResRTOFromUser(User user);
+//    List<UserResDTO> getUsersResDTOFromUsers(List<User> users);
+//    UserReqDTO UpdateUserResRTOFromUser(User user);
 }

@@ -8,6 +8,7 @@ import com.groupe.Worktopia.exception.ResourceExistException;
 import com.groupe.Worktopia.exception.ResourceNotFoundException;
 import com.groupe.Worktopia.mapper.ProfilMapper;
 import com.groupe.Worktopia.repository.ProfilRepo;
+import com.groupe.Worktopia.repository.UserRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -18,23 +19,28 @@ import java.util.Optional;
 public class ProfilServiceImpl implements ProfilService{
     public final ProfilRepo profilRepo;
     private  final ProfilMapper profilMapper;
+    private final UserRepo userRepo;
 
-    public ProfilServiceImpl(ProfilRepo profilRepo, ProfilMapper profilMapper) {
+    public ProfilServiceImpl(ProfilRepo profilRepo, ProfilMapper profilMapper, UserRepo userRepo) {
 
         this.profilRepo = profilRepo;
         this.profilMapper = profilMapper;
+        this.userRepo = userRepo;
     }
 
 
     @Override
-    public void addProfil(ProfilReqDTO profilReqDTO) {
+    public void addProfil(ProfilReqDTO profilReqDTO, Integer userId) {
 
-        Optional<Profil> addProfil = this.profilRepo.findByusername(profilReqDTO.getUsername());
+        Optional<Profil> addProfil = this.profilRepo.findByfirstname(profilReqDTO.getFirstname());
         if (addProfil.isPresent())
            throw new ResourceExistException("The profile already exist !");
 
         Profil profil = this.profilMapper.getProfileFromProfilReqDTO(profilReqDTO);
         profil.setCreatedAt(new Date());
+
+        User user = this.userRepo.findById(userId).orElseThrow(()->new ResourceNotFoundException("Resource not found !"));
+        profil.setUser(user);
         this.profilRepo.save(profil);
    }
 
@@ -56,7 +62,13 @@ public class ProfilServiceImpl implements ProfilService{
         Profil updatePro = this.profilRepo.findById(profilId)
                 .orElseThrow(()->new ResourceNotFoundException("Resource not found !"));;
 
-        updatePro.setUsername(profilReqDTO.getUsername());
+        updatePro.setLastname(profilReqDTO.getLastname());
+        updatePro.setFirstname(profilReqDTO.getFirstname());
+        updatePro.setNumerotelephone(profilReqDTO.getNumerotelephone());
+        updatePro.setAdresse(profilReqDTO.getAdresse());
+        updatePro.setDatedenaissance(profilReqDTO.getDatedenaissance());
+        updatePro.setGenre(profilReqDTO.getGenre());
+        updatePro.setPhotodeprofil(profilReqDTO.getPhotodeprofil());
         updatePro.setCv(profilReqDTO.getCv());
         updatePro.setUpdatedAt(new Date());
         this.profilRepo.saveAndFlush(updatePro);

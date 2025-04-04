@@ -1,19 +1,16 @@
 package com.groupe.Worktopia.dto.user;
 
 import com.groupe.Worktopia.dto.profil.ProfilReqDTO;
-import jakarta.persistence.Lob;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 
 @Data
 //@AllArgsConstructor
 //@NoArgsConstructor
-public class UserReqDTO {
+public class UserReq2DTO {
     @NotEmpty(message = "please fill this!")
     @NotNull(message = "this field couldn't be null")
     private String username;
@@ -22,18 +19,17 @@ public class UserReqDTO {
     private String email;
     private Integer roleId;
 
-    private ProfilReqDTO profilReqDTO;
 
 
-    public UserReqDTO() {
+    public UserReq2DTO() {
     }
 
-    public UserReqDTO(String username, String motDePasse, String email, Integer roleId, ProfilReqDTO profilReqDTO) {
+    public UserReq2DTO(String username, String motDePasse, String email, Integer roleId) {
         this.username = username;
         this.motDePasse = motDePasse;
         this.email = email;
         this.roleId = roleId;
-        this.profilReqDTO = profilReqDTO;
+
     }
 
 
@@ -69,11 +65,5 @@ public class UserReqDTO {
         this.roleId = roleId;
     }
 
-    public ProfilReqDTO getProfilReqDTO() {
-        return profilReqDTO;
-    }
 
-    public void setProfilReqDTO(ProfilReqDTO profilReqDTO) {
-        this.profilReqDTO = profilReqDTO;
-    }
 }

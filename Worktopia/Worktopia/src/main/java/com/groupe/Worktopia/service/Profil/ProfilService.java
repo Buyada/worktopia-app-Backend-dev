@@ -7,7 +7,7 @@ import com.groupe.Worktopia.entities.Profil;
 import java.util.List;
 
 public interface ProfilService {
-    void addProfil(ProfilReqDTO profilReqDTO);
+    void addProfil(ProfilReqDTO profilReqDTO, Integer userId);
     ProfilResDTO getProfil(int id);
     List<ProfilResDTO> getProfils();
     void updateProfil(Integer profilId, ProfilReqDTO profilReqDTO);

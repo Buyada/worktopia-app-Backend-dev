@@ -20,14 +20,14 @@ public class ProfilController {
         this.profilService = profilService;
     }
 
-    @PostMapping(path = "api/profile/add")
-    public ResponseEntity<String> addProfile(@Valid @RequestBody ProfilReqDTO profilReqDTO){
-        this.profilService.addProfil(profilReqDTO);
-
-        return ResponseEntity
-                .status(201)
-                .body("Profile added successfully !");
-    }
+//    @PostMapping(path = "api/profile/add")
+//    public ResponseEntity<String> addProfile(@Valid @RequestBody ProfilReqDTO profilReqDTO){
+//        this.profilService.addProfil(profilReqDTO);
+//
+//        return ResponseEntity
+//                .status(201)
+//                .body("Profile added successfully !");
+//    }
 
     @GetMapping(path = "api/profile/get_by_id/{profileId}")
     public ResponseEntity<ProfilResDTO> getProfileById(@PathVariable Integer profileId){

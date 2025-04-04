@@ -1,5 +1,6 @@
 package com.groupe.Worktopia.controller;
 
+import com.groupe.Worktopia.dto.user.UserReq2DTO;
 import com.groupe.Worktopia.dto.user.UserReqDTO;
 import com.groupe.Worktopia.dto.user.UserResDTO;
 import com.groupe.Worktopia.entities.User;
@@ -31,9 +32,12 @@ public class UserController {
     @GetMapping(path = "api/user/get_by_id/{userId}")
     public ResponseEntity<UserResDTO> getUser (@PathVariable Integer userId) {
 
-        return ResponseEntity
-                .status(200)
-                .body(this.userService.getUser(userId));
+//        return ResponseEntity
+//                .status(200)
+//                .body(this.userService.getUser(userId));
+
+        UserResDTO userResponseDTO = userService.getUser(userId);
+        return userResponseDTO != null ? ResponseEntity.ok(userResponseDTO) : ResponseEntity.notFound().build();
     }
 
     @GetMapping(path = "api/user/get_all")
@@ -44,8 +48,8 @@ public class UserController {
     }
 
     @PutMapping(path = "api/user/update_by_id")
-    public ResponseEntity<String> userUpdate( Integer userId, @Valid @RequestBody UserReqDTO userReqDTO){
-        this.userService.updateUser(userId, userReqDTO);
+    public ResponseEntity<String> userUpdate(Integer userId, @Valid @RequestBody UserReq2DTO userReq2DTO){
+        this.userService.updateUser(userId, userReq2DTO);
 
         return ResponseEntity
                 .status(200)

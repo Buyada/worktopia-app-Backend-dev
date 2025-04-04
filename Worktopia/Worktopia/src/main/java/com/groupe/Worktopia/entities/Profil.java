@@ -19,6 +19,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "profil")
 //@Table(name = "profil")
 
 public class Profil implements Serializable {
@@ -28,16 +29,23 @@ public class Profil implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer profilId;
-    private String username;
-    @Lob
-    @Column(name = "cv")
+
+
+    private String firstname;
+    private String lastname;
+    private long numerotelephone;
+    private String adresse;
+    private String datedenaissance;
+    private String genre;
+    private byte[] photodeprofil;
     private byte[] cv;
 
     private Date createdAt;
     private Date updatedAt;// Stocke le CV en base
 
-    @OneToMany(mappedBy = "profil", cascade = CascadeType.ALL)
-    private List<User> users;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 
 }
