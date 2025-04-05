@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-04-04T23:14:58+0200",
+    date = "2025-04-05T18:21:34+0100",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 23.0.1 (Oracle Corporation)"
 )
 @Component
@@ -24,6 +24,8 @@ public class RoleMapperImpl implements RoleMapper {
 
         Role role = new Role();
 
+        role.setRolename( roleReqDTO.getRolename() );
+
         return role;
     }
 
@@ -34,6 +36,9 @@ public class RoleMapperImpl implements RoleMapper {
         }
 
         RoleResDTO roleResDTO = new RoleResDTO();
+
+        roleResDTO.setRoleId( role.getRoleId() );
+        roleResDTO.setRolename( role.getRolename() );
 
         return roleResDTO;
     }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-//@Component
+@Component
 public interface ProfilMapper {
     Profil getProfileFromProfilReqDTO(ProfilReqDTO profilReqDTO);
     ProfilResDTO getProfilResDTOFromProfil(Profil profil);

@@ -5,87 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd44f753-0115-43ad-a1a8-1da79304267e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/HELP.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/Mapper/ProfilMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/Mapper/RoleMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/Mapper/UserMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/WorktopiaApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/controller/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/controller/ProfilController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/controller/RoleController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/controller/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/dto/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/dto/ErrorMessage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/dto/profil/ProfilReqDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/dto/profil/ProfilResDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/dto/role/RoleReqDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/dto/role/RoleResDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/dto/user/UserReqDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/dto/user/UserResDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/entities/Profil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/entities/Role.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/entities/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/exception/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/exception/GlobalExceptionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/exception/ResourceExistException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/exception/ResourceNotFoundException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/repository/ProfilRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/repository/RoleRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/repository/UserRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/service/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/service/Profil/ProfilService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/service/Profil/ProfilServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/service/User/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/service/User/UserServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/service/role/RoleService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/java/com/groupe/Worktopia/service/role/RoleServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/src/test/java/com/groupe/Worktopia/WorktopiaApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/Mapper/ProfilMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/Mapper/ProfilMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/Mapper/RoleMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/Mapper/RoleMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/Mapper/UserMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/Mapper/UserMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/WorktopiaApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/controller/ProfilController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/controller/RoleController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/controller/UserController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/dto/ErrorMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/dto/profil/ProfilReqDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/dto/profil/ProfilResDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/dto/role/RoleReqDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/dto/role/RoleResDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/dto/user/UserReqDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/dto/user/UserResDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/entities/Profil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/entities/Role.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/entities/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/exception/GlobalExceptionHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/exception/ResourceExistException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/exception/ResourceNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/repository/ProfilRepo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/repository/RoleRepo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/repository/UserRepo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/service/Profil/ProfilService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/service/Profil/ProfilServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/service/User/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/service/User/UserServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/service/role/RoleService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/classes/com/groupe/Worktopia/service/role/RoleServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/Mapper/ProfilMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/Mapper/RoleMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Worktopia/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/Mapper/UserMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/Mapper/ProfilMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/Mapper/ProfilMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/Mapper/RoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/Mapper/RoleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/Mapper/ProfilMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/Mapper/ProfilMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/Mapper/RoleMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/Mapper/RoleMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/Mapper/UserMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/Mapper/UserMapperImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,9 +20,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2uU2rzrhcHcEEstgL8pTwluan4F" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -105,6 +30,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.WorktopiaApplication.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "Weezy",
     "kotlin-language-version-configured": "true",
