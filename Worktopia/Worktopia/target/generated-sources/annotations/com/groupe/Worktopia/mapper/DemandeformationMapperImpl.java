@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-03-16T04:07:05+0100",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.11 (Oracle Corporation)"
+    date = "2025-04-05T19:00:30+0100",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 23.0.1 (Oracle Corporation)"
 )
 @Component
 public class DemandeformationMapperImpl implements DemandeformationMapper {
@@ -24,9 +24,6 @@ public class DemandeformationMapperImpl implements DemandeformationMapper {
 
         Demandeformation demandeformation = new Demandeformation();
 
-        demandeformation.setObjet( demandeformationReqDTO.getObjet() );
-        demandeformation.setCommentaire( demandeformationReqDTO.getCommentaire() );
-
         return demandeformation;
     }
 
@@ -37,10 +34,6 @@ public class DemandeformationMapperImpl implements DemandeformationMapper {
         }
 
         DemandeformationResDTO demandeformationResDTO = new DemandeformationResDTO();
-
-        demandeformationResDTO.setObjet( demandeformation.getObjet() );
-        demandeformationResDTO.setCommentaire( demandeformation.getCommentaire() );
-        demandeformationResDTO.setDemandeformationId( demandeformation.getDemandeformationId() );
 
         return demandeformationResDTO;
     }

@@ -53,8 +53,7 @@ public class GlobalExceptionHandler {
         return errors;
     }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> Weezy
+
+
 }

@@ -9,7 +9,7 @@ import com.groupe.Worktopia.exception.ResourceNotFoundException;
 import com.groupe.Worktopia.mapper.DemandeformationMapper;
 import com.groupe.Worktopia.repository.DemandeformationRepo;
 import com.groupe.Worktopia.repository.FormationRepo;
-import com.groupe.Worktopia.service.mail.EmailSenderService;
+
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -25,41 +25,28 @@ public class DemandeformationServiceImpl  implements DemandeformationService {
     private final DemandeformationMapper demandeformationMapper;
     private  final FormationRepo formationRepo;
     @Autowired
-    private final EmailSenderService emailSenderService ;
 
-    public DemandeformationServiceImpl(DemandeformationRepo demandeformationRepo, DemandeformationMapper demandeformationMapper, FormationRepo formationRepo, EmailSenderService emailSenderService){
+
+    public DemandeformationServiceImpl(DemandeformationRepo demandeformationRepo, DemandeformationMapper demandeformationMapper, FormationRepo formationRepo){
         this.demandeformationRepo = demandeformationRepo;
         this.demandeformationMapper = demandeformationMapper;
         this.formationRepo = formationRepo;
-        this.emailSenderService = emailSenderService;
+
     }
     @Override
     public void addDemande(DemandeformationReqDTO demandeformationReqDTO) {
 
         Formation formatonToAdd = this.formationRepo.findById(demandeformationReqDTO.getFormationId())
-                .orElseThrow(()-> new ResourceNotFoundException("Formation not found !"));
+                .orElseThrow(() -> new ResourceNotFoundException("Formation not found !"));
 
         Demandeformation demandeformation = this.demandeformationMapper
                 .getDemandeformationFromDemandeFormationReqDTO(demandeformationReqDTO);
         demandeformation.setCreatedAt(new Date());
         demandeformation.setFormation(formatonToAdd);
         this.demandeformationRepo.save(demandeformation);
-        emailSenderService.sendEmail("dongmosammmar@gmail.com",
-                demandeformationReqDTO.getObjet(),
-                demandeformationReqDTO.getCommentaire());
 
-        //@EventListener(ApplicationReadyEvent.class)
 
     }
-//    public void sendMail(){
-//        emailSenderService.sendEmail("dongmosammmar@gmail.com",
-//                "Demande de formation",
-//                "Pour ameliorer mes competences en front-end, pour cela" +
-//                        "je sollicite votre bienveillance pour m'accorder une formation" +
-//                        "qui sera benefique non seulement pour moi mais aussi pour l'entreprise"
-//        );
-//    }
-
     @Override
     public DemandeformationResDTO getDemandeById(Integer demandeformationId) {
         Demandeformation demandeformation = this.demandeformationRepo.findById(demandeformationId).get();
