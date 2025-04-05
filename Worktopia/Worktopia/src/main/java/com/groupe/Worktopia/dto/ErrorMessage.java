@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+<<<<<<< HEAD
 
     @NoArgsConstructor
     @AllArgsConstructor
@@ -17,3 +18,14 @@ import java.util.Date;
         private String error;
     }
 
+=======
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class ErrorMessage {
+    private Integer statusCode;
+    private Date timestamp;
+    private String message;
+    private String error;
+}
+>>>>>>> Weezy
