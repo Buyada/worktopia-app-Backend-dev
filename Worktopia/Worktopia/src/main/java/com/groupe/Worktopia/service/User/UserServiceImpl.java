@@ -16,6 +16,7 @@ import com.groupe.Worktopia.repository.ProfilRepo;
 import com.groupe.Worktopia.repository.RoleRepo;
 import com.groupe.Worktopia.repository.UserRepo;
 import com.groupe.Worktopia.service.Profil.ProfilServiceImpl;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class UserServiceImpl implements UserService{
     private final UserMapper userMapper;
     private final RoleRepo roleRepo;
     private final ProfilRepo profilRepo;
+    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
     private  final ProfilServiceImpl profilServiceImpl;
 
     public UserServiceImpl(UserRepo userRepo, UserMapper userMapper, RoleRepo roleRepo, ProfilRepo profilRepo, ProfilServiceImpl profilServiceImpl) {
@@ -57,6 +59,8 @@ public class UserServiceImpl implements UserService{
         user.setRole(role);
 //        user.set
 //        user.setProfil(profil);
+
+        user.setMotDePasse(encoder.encode(userReqDTO.getMotDePasse()));
 
        User savedUser =  this.userRepo.save(user);
        Integer etId = savedUser.getUserId();
