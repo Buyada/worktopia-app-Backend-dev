@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ea76e842-8fe1-47b0-bdd2-09e53ece0cfb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/Mapper/ProfilMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/Mapper/ProfilMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/Mapper/RoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/Mapper/RoleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/Mapper/ProfilMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/Mapper/ProfilMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/Mapper/RoleMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/Mapper/RoleMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/Mapper/UserMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/Mapper/UserMapperImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,12 +30,13 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.WorktopiaApplication.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "5e76baa4",
+    "git-widget-placeholder": "Weezy",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/HP ZBook/Desktop/Formation java/PIL1/worktopia-app-Backend-dev/Worktopia"
+    "last_opened_file_path": "C:/Users/SMARTech/OneDrive/Documents/logonedigital/worktopia-app-Backend-dev"
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
