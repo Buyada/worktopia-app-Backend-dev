@@ -13,5 +13,4 @@ import java.util.Optional;
 @Repository
 public interface CongeRepo extends JpaRepository<Conge, Long> {
     List<Conge> findByRetourCongeAfter(Date date);
-    Optional<Conge> findByAbsence(Absence absence);
 }
