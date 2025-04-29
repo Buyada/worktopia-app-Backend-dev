@@ -17,9 +17,7 @@ public class CategorieReqDTO {
     @NotEmpty(message = "please fill this field !")
     @NotNull(message = "this field couldn't be null !")
     private String description;
-    @NotEmpty(message = "please fill this field !")
-    @NotNull(message = "this field couldn't be null !")
-    private String typeFormation;
+
 
 
     public void setIntitule(String intitule){
@@ -37,10 +35,5 @@ public class CategorieReqDTO {
         return description;
     }
 
-    public void setTypeFormation(String typeFormation){
-        this.typeFormation = typeFormation;
-    }
-    public String getTypeFormation(){
-        return  typeFormation;
-    }
+
 }

@@ -22,9 +22,7 @@ public class CategorieResDTO {
     @NotEmpty(message = "please fill this field !")
     @NotNull(message = "this field couldn't be null !")
     private String description;
-    @NotEmpty(message = "please fill this field !")
-    @NotNull(message = "this field couldn't be null !")
-    private String typeFormation;
+
 
 
     private List<FormationResDTO> formations ;

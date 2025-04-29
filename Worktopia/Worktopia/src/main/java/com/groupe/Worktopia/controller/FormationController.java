@@ -5,6 +5,7 @@ import com.groupe.Worktopia.dto.formation.FormationReqDTO;
 import com.groupe.Worktopia.dto.formation.FormationResDTO;
 import com.groupe.Worktopia.entities.Categorie;
 import com.groupe.Worktopia.entities.Formation;
+import com.groupe.Worktopia.mapper.FormationMapper;
 import com.groupe.Worktopia.repository.FormationRepo;
 import com.groupe.Worktopia.service.formation.FormationServer;
 import jakarta.validation.Valid;
@@ -20,9 +21,11 @@ public class FormationController {
 
     public  final FormationServer formationServer;
     public final FormationRepo formationRepo;
-    public FormationController(FormationServer formationServer, FormationRepo formationRepo){
+    public final FormationMapper formationMapper;
+    public FormationController(FormationServer formationServer, FormationRepo formationRepo, FormationMapper formationMapper){
         this.formationServer = formationServer;
         this.formationRepo = formationRepo;
+        this.formationMapper = formationMapper;
     }
 
     @PostMapping(path = "api/formation/add")
@@ -73,9 +76,9 @@ public class FormationController {
 //    }
 
     @PostMapping(path = "api/formation/pagination")
-    public Page<Formation> getAllFormationUsingPagination(@RequestBody PageRequestDTO pageRequestDTO){
+    public Page<FormationResDTO> getAllFormationUsingPagination(@RequestBody PageRequestDTO pageRequestDTO){
         Pageable pageable = new PageRequestDTO().getPageable(pageRequestDTO);
         Page<Formation> formationPage = this.formationRepo.findAll(pageable);
-        return  formationPage;
+        return  formationPage.map(this.formationMapper::getFormationResDTOFromFormation);
     }
 }
