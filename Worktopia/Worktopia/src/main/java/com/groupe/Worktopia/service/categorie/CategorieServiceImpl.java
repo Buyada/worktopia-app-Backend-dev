@@ -71,7 +71,6 @@ public class CategorieServiceImpl implements CategorieService {
         Categorie categorieToUpdate = this.categorieRepo.findById(categorieId).orElseThrow(()-> new ResourceNotFoundException("Resource not Found"));
         categorieToUpdate.setIntitule(categorieResDTO.getIntitule());
         categorieToUpdate.setDescription(categorieResDTO.getDescription());
-        categorieToUpdate.setTypeFormation(categorieResDTO.getTypeFormation());
         categorieToUpdate.setUpdatedAt(new Date());
         this.categorieRepo.saveAndFlush(categorieToUpdate);
 

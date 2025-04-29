@@ -10,9 +10,14 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-@Component
+//@Component
 public interface CategorieMapper {
-    Categorie getCategorieFromCategorieReqDTO(CategorieReqDTO categorieReqDTO);
+     Categorie getCategorieFromCategorieReqDTO(CategorieReqDTO categorieReqDTO);
+
+
     CategorieResDTO getCategorieResDTOFromCategorie(Categorie categorie);
+
     List<CategorieResDTO> getAllCategoriesResDTOFromAllCategories(List<Categorie> categories);
 }
+
+

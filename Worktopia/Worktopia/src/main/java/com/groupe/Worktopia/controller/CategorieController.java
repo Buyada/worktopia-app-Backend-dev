@@ -4,6 +4,7 @@ import com.groupe.Worktopia.dto.PageRequestDTO;
 import com.groupe.Worktopia.dto.categorie.CategorieReqDTO;
 import com.groupe.Worktopia.dto.categorie.CategorieResDTO;
 import com.groupe.Worktopia.entities.Categorie;
+import com.groupe.Worktopia.mapper.CategorieMapper;
 import com.groupe.Worktopia.repository.CategorieRepo;
 import com.groupe.Worktopia.service.categorie.CategorieService;
 import jakarta.validation.Valid;
@@ -18,9 +19,11 @@ import java.util.List;
 public class CategorieController {
     public final CategorieService categorieService;
     public final CategorieRepo categorieRepo;
-     public CategorieController(CategorieService categorieService, CategorieRepo categorieRepo){
+    public final CategorieMapper categorieMapper;
+     public CategorieController(CategorieService categorieService, CategorieRepo categorieRepo, CategorieMapper categorieMapper){
         this.categorieService = categorieService;
          this.categorieRepo = categorieRepo;
+         this.categorieMapper = categorieMapper;
      }
 
      @PostMapping(path = "api/categorie/add")
@@ -53,10 +56,10 @@ public class CategorieController {
                  .body("Category updated sucessfully");
      }
      @PostMapping(path = "api/categorie/pagination")
-     public Page<Categorie> getAllCategorieUsingPagination(@RequestBody PageRequestDTO pageRequestDTO){
+     public Page<CategorieResDTO> getAllCategorieUsingPagination(@RequestBody PageRequestDTO pageRequestDTO){
          Pageable pageable = new PageRequestDTO().getPageable(pageRequestDTO);
          Page<Categorie> categoriePage = this.categorieRepo.findAll(pageable);
-         return  categoriePage;
+         return  categoriePage.map(this.categorieMapper::getCategorieResDTOFromCategorie);
      }
 
      @PutMapping(path = "api/categorie/delete_by_id/{categorieId}")
