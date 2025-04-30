@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-04-05T19:00:30+0100",
+    date = "2025-04-30T01:49:22+0200",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 23.0.1 (Oracle Corporation)"
 )
 @Component
@@ -24,6 +24,10 @@ public class FormationMapperImpl implements FormationMapper {
 
         Formation formation = new Formation();
 
+        formation.setIntitule( formationReqDTO.getIntitule() );
+        formation.setDescription( formationReqDTO.getDescription() );
+        formation.setDuree( formationReqDTO.getDuree() );
+
         return formation;
     }
 
@@ -34,6 +38,11 @@ public class FormationMapperImpl implements FormationMapper {
         }
 
         FormationResDTO formationResDTO = new FormationResDTO();
+
+        formationResDTO.setFormationId( formation.getFormationId() );
+        formationResDTO.setIntitule( formation.getIntitule() );
+        formationResDTO.setDescription( formation.getDescription() );
+        formationResDTO.setDuree( formation.getDuree() );
 
         return formationResDTO;
     }

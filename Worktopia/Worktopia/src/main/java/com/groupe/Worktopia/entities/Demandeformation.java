@@ -31,6 +31,7 @@ public class Demandeformation implements Serializable {
     //@JoinColumn(name = "formation_id")
     private Formation formation;
 
-//    @ManyToOne
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

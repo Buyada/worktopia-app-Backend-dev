@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-@Component
+//@Component
 public interface RoleMapper {
     Role getRoleFromRoleReqDTO(RoleReqDTO roleReqDTO);
     RoleResDTO getRoleResDTOFromRole(Role role);

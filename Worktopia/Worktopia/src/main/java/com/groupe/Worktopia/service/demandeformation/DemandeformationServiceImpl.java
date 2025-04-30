@@ -5,11 +5,13 @@ import com.groupe.Worktopia.dto.demandeformation.DemandeformationResDTO;
 import com.groupe.Worktopia.dto.formation.FormationReqDTO;
 import com.groupe.Worktopia.entities.Demandeformation;
 import com.groupe.Worktopia.entities.Formation;
+import com.groupe.Worktopia.entities.User;
 import com.groupe.Worktopia.exception.ResourceNotFoundException;
 import com.groupe.Worktopia.mapper.DemandeformationMapper;
 import com.groupe.Worktopia.repository.DemandeformationRepo;
 import com.groupe.Worktopia.repository.FormationRepo;
 
+import com.groupe.Worktopia.repository.UserRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -24,14 +26,16 @@ public class DemandeformationServiceImpl  implements DemandeformationService {
     public final DemandeformationRepo demandeformationRepo;
     private final DemandeformationMapper demandeformationMapper;
     private  final FormationRepo formationRepo;
+    private final UserRepo userRepo;
     @Autowired
 
 
-    public DemandeformationServiceImpl(DemandeformationRepo demandeformationRepo, DemandeformationMapper demandeformationMapper, FormationRepo formationRepo){
+    public DemandeformationServiceImpl(DemandeformationRepo demandeformationRepo, DemandeformationMapper demandeformationMapper, FormationRepo formationRepo, UserRepo userRepo){
         this.demandeformationRepo = demandeformationRepo;
         this.demandeformationMapper = demandeformationMapper;
         this.formationRepo = formationRepo;
 
+        this.userRepo = userRepo;
     }
     @Override
     public void addDemande(DemandeformationReqDTO demandeformationReqDTO) {
@@ -39,10 +43,14 @@ public class DemandeformationServiceImpl  implements DemandeformationService {
         Formation formatonToAdd = this.formationRepo.findById(demandeformationReqDTO.getFormationId())
                 .orElseThrow(() -> new ResourceNotFoundException("Formation not found !"));
 
+        User userToadd = this.userRepo.findById(demandeformationReqDTO.getUserId())
+                .orElseThrow(()->new ResourceNotFoundException("User not found"));
+
         Demandeformation demandeformation = this.demandeformationMapper
                 .getDemandeformationFromDemandeFormationReqDTO(demandeformationReqDTO);
         demandeformation.setCreatedAt(new Date());
         demandeformation.setFormation(formatonToAdd);
+        demandeformation.setUser(userToadd);
         this.demandeformationRepo.save(demandeformation);
 
 

@@ -4,17 +4,14 @@ import com.groupe.Worktopia.dto.profil.ProfilReqDTO;
 import com.groupe.Worktopia.dto.profil.ProfilResDTO;
 import com.groupe.Worktopia.entities.Profil;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-<<<<<<< HEAD
-    date = "2025-04-05T19:00:30+0100",
-=======
-    date = "2025-04-06T09:44:04+0200",
->>>>>>> Weezy
+    date = "2025-04-30T02:31:56+0200",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 23.0.1 (Oracle Corporation)"
 )
 @Component
@@ -28,6 +25,21 @@ public class ProfilMapperImpl implements ProfilMapper {
 
         Profil profil = new Profil();
 
+        profil.setFirstname( profilReqDTO.getFirstname() );
+        profil.setLastname( profilReqDTO.getLastname() );
+        profil.setNumerotelephone( profilReqDTO.getNumerotelephone() );
+        profil.setAdresse( profilReqDTO.getAdresse() );
+        profil.setDatedenaissance( profilReqDTO.getDatedenaissance() );
+        profil.setGenre( profilReqDTO.getGenre() );
+        byte[] photodeprofil = profilReqDTO.getPhotodeprofil();
+        if ( photodeprofil != null ) {
+            profil.setPhotodeprofil( Arrays.copyOf( photodeprofil, photodeprofil.length ) );
+        }
+        byte[] cv = profilReqDTO.getCv();
+        if ( cv != null ) {
+            profil.setCv( Arrays.copyOf( cv, cv.length ) );
+        }
+
         return profil;
     }
 
@@ -38,6 +50,22 @@ public class ProfilMapperImpl implements ProfilMapper {
         }
 
         ProfilResDTO profilResDTO = new ProfilResDTO();
+
+        profilResDTO.setFirstname( profil.getFirstname() );
+        profilResDTO.setLastname( profil.getLastname() );
+        profilResDTO.setNumerotelephone( profil.getNumerotelephone() );
+        profilResDTO.setAdresse( profil.getAdresse() );
+        profilResDTO.setDatedenaissance( profil.getDatedenaissance() );
+        profilResDTO.setGenre( profil.getGenre() );
+        byte[] photodeprofil = profil.getPhotodeprofil();
+        if ( photodeprofil != null ) {
+            profilResDTO.setPhotodeprofil( Arrays.copyOf( photodeprofil, photodeprofil.length ) );
+        }
+        byte[] cv = profil.getCv();
+        if ( cv != null ) {
+            profilResDTO.setCv( Arrays.copyOf( cv, cv.length ) );
+        }
+        profilResDTO.setProfilId( profil.getProfilId() );
 
         return profilResDTO;
     }

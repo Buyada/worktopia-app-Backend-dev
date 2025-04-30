@@ -19,6 +19,7 @@ public class DemandeformationReqDTO {
     @NotNull(message = "this field couldn't be null !")
     private String commentaire;
     private Integer formationId;
+    private Integer userId;
 
     public void setObjet(String objet){this.objet = objet;};
     public String getObjet(){return objet;}
@@ -33,5 +34,12 @@ public class DemandeformationReqDTO {
     }
     public Integer getFormationId(){
         return formationId;
+    }
+
+    public void setUserId(Integer userId){
+        this.userId = userId;
+    }
+    public Integer getUserId(){
+        return userId;
     }
 }

@@ -48,4 +48,7 @@ public class User implements Serializable {
     @JoinColumn(name = "role_id")
     private Role role;
 
+    @OneToMany(mappedBy = "user")
+    private List<Demandeformation> demandeFormations;
+
 }
