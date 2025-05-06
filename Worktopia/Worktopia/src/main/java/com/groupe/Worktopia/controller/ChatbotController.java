@@ -1,6 +1,7 @@
 package com.groupe.Worktopia.controller;
 
 import com.groupe.Worktopia.service.ChatbotConge.ChatbotService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,7 +14,9 @@ public class ChatbotController {
     }
 
     @PostMapping("/ask")
-    public String askChatbot(@RequestBody String message) {
-        return chatbotService.getResponse(message);
+    public ResponseEntity<String> ask(@RequestBody String question) {
+        String response = chatbotService.getResponse(question);
+        return ResponseEntity.ok(response);
     }
+
 }
