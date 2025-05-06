@@ -1,6 +1,8 @@
 package com.groupe.Worktopia.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.io.Serial;
@@ -26,10 +28,12 @@ public class Categorie implements Serializable {
     private String intitule;
     private String description;
     private String typeFormation; //en ligne , en presentiel, mixte
-    private Boolean Status;
+    private Boolean Status;   //"En cours", "Approuvée", "Refusée"
     private Date createdAt;
     private Date updatedAt;
 
-@OneToMany
-   private List<Formation> formations = new ArrayList<>();
+
+
+    @OneToMany(mappedBy = "categorie")
+    private List<Formation> formations = new ArrayList<>();
 }

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c8517d2f-8571-4550-bd6e-513f3483b7ea" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/dto/demandeformation/DemandeformationReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/dto/demandeformation/DemandeformationReqDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/dto/demandeformation/DemandeformationResDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/dto/demandeformation/DemandeformationResDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/entities/Demandeformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/entities/Demandeformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/mapper/CategorieMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/mapper/CategorieMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/mapper/DemandeformationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/mapper/DemandeformationMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/mapper/RoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/mapper/RoleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/service/demandeformation/DemandeformationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/src/main/java/com/groupe/Worktopia/service/demandeformation/DemandeformationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/WorktopiaApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/WorktopiaApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/dto/categorie/CategorieReqDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/dto/categorie/CategorieReqDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/dto/categorie/CategorieResDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/dto/categorie/CategorieResDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/dto/demandeformation/DemandeformationReqDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/dto/demandeformation/DemandeformationReqDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/dto/demandeformation/DemandeformationResDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/dto/demandeformation/DemandeformationResDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/entities/Demandeformation.class" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/entities/Demandeformation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/entities/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/entities/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/mapper/CategorieMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/mapper/CategorieMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/mapper/DemandeformationMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/mapper/DemandeformationMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/mapper/DemandeformationMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/mapper/DemandeformationMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/mapper/ProfilMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/mapper/ProfilMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/mapper/RoleMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/mapper/RoleMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/mapper/RoleMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/mapper/RoleMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/mapper/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/mapper/UserMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/mapper/UserMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/service/categorie/CategorieServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/service/categorie/CategorieServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/service/demandeformation/DemandeformationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/classes/com/groupe/Worktopia/service/demandeformation/DemandeformationServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/mapper/CategorieMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/mapper/CategorieMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/mapper/DemandeformationMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/mapper/DemandeformationMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/mapper/FormationMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/mapper/FormationMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/mapper/ProfilMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/mapper/ProfilMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/mapper/RoleMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/mapper/RoleMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/mapper/UserMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Worktopia/target/generated-sources/annotations/com/groupe/Worktopia/mapper/UserMapperImpl.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2wQ97AZ2VkyRUhXEeoYhL7fx6aY" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.WorktopiaApplication.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "merged",
+    "kotlin-language-version-configured": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c8517d2f-8571-4550-bd6e-513f3483b7ea" name="Changes" comment="" />
+      <created>1745962769121</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1745962769121</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -1,6 +1,8 @@
 package com.groupe.Worktopia.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.io.Serial;
@@ -28,9 +30,9 @@ public class Formation implements Serializable {
     private Date createdAt;
     private Date updatedAt;
 
-    @ManyToOne
-    private Categorie categorie;
 
-    @OneToMany
-    private List<Demandeformation> demandeformations;
+
+    @ManyToOne
+    @JoinColumn(name = "categorie_id")
+    private Categorie categorie;
 }
