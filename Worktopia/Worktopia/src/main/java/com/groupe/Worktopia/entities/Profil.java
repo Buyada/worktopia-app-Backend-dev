@@ -1,4 +1,7 @@
 package com.groupe.Worktopia.entities;
+<<<<<<< HEAD
+public class Profil {
+=======
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
@@ -48,4 +51,5 @@ public class Profil implements Serializable {
     private User user;
 
 
+>>>>>>> merged
 }
